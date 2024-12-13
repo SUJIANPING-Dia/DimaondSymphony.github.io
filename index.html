@@ -48,6 +48,7 @@
             font-size: 1.5rem;
             color: #d4af37;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         main p {
@@ -58,30 +59,44 @@
         }
 
         .links {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
+            margin-bottom: 30px;
         }
 
         .links a {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            padding: 12px 0;
             text-decoration: none;
             color: #fff;
             background-color: #d4af37;
-            border-radius: 5px;
+            border-radius: 8px;
+            padding: 20px 10px;
             transition: background-color 0.3s;
+            text-align: center;
         }
 
         .links a:hover {
             background-color: #b18d30;
         }
 
-        .links a span {
-            margin-left: 8px;
+        .links a .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .links a .platform {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .links a .desc {
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .explanation, .services {
@@ -152,7 +167,19 @@
             }
 
             .links a {
+                padding: 15px;
+            }
+
+            .links a .icon {
+                font-size: 1.6rem;
+            }
+
+            .links a .platform {
                 font-size: 0.95rem;
+            }
+
+            .links a .desc {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -170,39 +197,39 @@
         <p>透過以下平台，您可以隨時追蹤鑽之韻的最新消息、精彩影片、品牌活動與精美產品展示。我們用多元管道讓您更深入認識我們的品牌價值與創作理念。</p>
         <div class="links">
             <a href="https://www.youtube.com/@%E9%91%BD%E4%B9%8B%E9%9F%BBDIAMONDSYMPHONY/shorts" target="_blank">  
-                📺 <span>YouTube - 精彩短影片</span>
+                <div class="icon">📺</div>
+                <div class="platform">YouTube</div>
+                <div class="desc">精彩短影片</div>
             </a>
             <a href="https://www.tiktok.com/@.diamond.symphony" target="_blank">  
-                🎬 <span>TikTok - 趣味短影片</span>
+                <div class="icon">🎬</div>
+                <div class="platform">TikTok</div>
+                <div class="desc">趣味短影片</div>
             </a>
             <a href="https://www.facebook.com/profile.php?id=61565776509572" target="_blank">  
-                👍 <span>Facebook - 品牌資訊與活動</span>
+                <div class="icon">👍</div>
+                <div class="platform">Facebook</div>
+                <div class="desc">品牌資訊與活動</div>
             </a>
             <a href="https://www.instagram.com/zuanzhiyun/" target="_blank">
-                📷 <span>Instagram - 精美珠寶展示</span>
+                <div class="icon">📷</div>
+                <div class="platform">Instagram</div>
+                <div class="desc">精美珠寶展示</div>
             </a>
             <a href="https://lin.ee/dY9OiEQ" target="_blank">
-                💬 <span>LINE 官方帳號 - 線上諮詢與新品訊息</span>
+                <div class="icon">💬</div>
+                <div class="platform">LINE</div>
+                <div class="desc">線上諮詢與新品訊息</div>
             </a>
         </div>
 
         <section class="explanation">
             <h2>為何追蹤我們？</h2>
-            <p>
-                <strong>YouTube</strong>：透過精選短影片，快速瀏覽最精緻的珠寶作品與品牌製作過程，體驗工匠們的卓越技術。
-            </p>
-            <p>
-                <strong>TikTok</strong>：以輕鬆活潑的短影音，讓您更貼近品牌的日常創作故事與幕後花絮。
-            </p>
-            <p>
-                <strong>Facebook</strong>：第一時間取得品牌新聞、優惠活動及展覽資訊，讓您不錯過任何最新訊息。
-            </p>
-            <p>
-                <strong>Instagram</strong>：透過高質感影像欣賞多款設計理念與時尚搭配，啟發您的珠寶穿搭靈感。
-            </p>
-            <p>
-                <strong>LINE 官方帳號</strong>：直接與我們的客服團隊互動，獲得專業諮詢及最新產品目錄。
-            </p>
+            <p><strong>YouTube</strong>：透過精選短影片，快速瀏覽最精緻的珠寶作品與品牌製作過程，體驗工匠們的卓越技術。</p>
+            <p><strong>TikTok</strong>：以輕鬆活潑的短影音，讓您更貼近品牌的日常創作故事與幕後花絮。</p>
+            <p><strong>Facebook</strong>：第一時間取得品牌新聞、優惠活動及展覽資訊，讓您不錯過任何最新訊息。</p>
+            <p><strong>Instagram</strong>：透過高質感影像欣賞多款設計理念與時尚搭配，啟發您的珠寶穿搭靈感。</p>
+            <p><strong>LINE 官方帳號</strong>：直接與我們的客服團隊互動，獲得專業諮詢及最新產品目錄。</p>
         </section>
 
         <section class="services">
