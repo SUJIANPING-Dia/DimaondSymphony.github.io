@@ -118,33 +118,44 @@
             background-color: #3162b2;
         }
 
-        /* 表格與服務樣式 */
-        .services h3 {
-            font-size: 1.5rem;
-            color: #f4c150;
-            margin: 30px 0 20px;
+        /* 服務卡片樣式 */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .services table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-
-        .services table, .services th, .services td {
-            border: 1px solid #444;
-        }
-
-        .services th {
-            padding: 10px;
-            background: #292929;
-            color: #f4c150;
-        }
-
-        .services td {
-            padding: 10px;
+        .service-card {
+            background: #2b2b2b;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            color: #e0e0e0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card .icon {
+            font-size: 2.5rem;
+            color: #f4c150;
+            margin-bottom: 15px;
+        }
+
+        .service-card h4 {
+            font-size: 1.2rem;
+            color: #f4c150;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #bdbdbd;
+            line-height: 1.6;
         }
 
         footer {
@@ -190,6 +201,18 @@
 
             .links a .desc {
                 font-size: 0.85rem;
+            }
+
+            .service-card .icon {
+                font-size: 2rem;
+            }
+
+            .service-card h4 {
+                font-size: 1rem;
+            }
+
+            .service-card p {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -240,34 +263,29 @@
 
         <section class="services">
             <h3>專業服務</h3>
-            <p>我們提供 GIA 認證的天然與培育鑽石定製服務，打造獨一無二的珠寶。</p>
-            <table>
-                <tr>
-                    <th>戒指</th>
-                    <th>項鍊</th>
-                    <th>耳環</th>
-                    <th>手鍊</th>
-                    <th>裸鑽</th>
-                </tr>
-                <tr>
-                    <td>◎</td>
-                    <td>◎</td>
-                    <td>◎</td>
-                    <td>◎</td>
-                    <td>◎</td>
-                </tr>
-            </table>
-            <h3>據點與時間</h3>
-            <p>
-                📍 台北辦公室：民生東路二段143號8F<br>
-                📍 台中鑽之璨門市：朝富路268號<br>
-                ⏰ 營業時間：11:00 - 19:00 (店休：週日 & 週一)
-            </p>
-            <h3>預約服務</h3>
-            <p>
-                ☎️ 提供一對一服務，請至少提前一天預約。<br>
-                🚗 24H全台服務，專員上門為您服務。
-            </p>
+            <p>我們提供多樣化的珠寶設計與定製服務，每件作品皆經過嚴謹工藝，完美呈現您的個人風格。</p>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="icon">💍</div>
+                    <h4>戒指定製</h4>
+                    <p>從經典款到創意設計，為您打造一生珍藏的婚戒或紀念戒。</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📿</div>
+                    <h4>項鍊設計</h4>
+                    <p>設計專屬於您的吊墜與項鍊，突顯個性與品味。</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">👂</div>
+                    <h4>耳環定製</h4>
+                    <p>無論是耳釘還是垂墜款，均可根據需求量身設計。</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">💎</div>
+                    <h4>裸鑽服務</h4>
+                    <p>提供 GIA 認證裸鑽，助您打造夢想中的珠寶。</p>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
