@@ -112,6 +112,28 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        .consultation-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #121212;
+            background-color: #f4c150;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .consultation-button:hover {
+            background-color: #d4a731;
+            transform: translateY(-3px);
+        }
+        .consultation-button {
+    text-decoration: none; /* 移除文字底線 */
+}
+
     </style>
     <script>
         function showSection(category) {
@@ -294,6 +316,7 @@
         
     </main>
     <footer>
+        <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
         <p>返回<a href="index.html">首頁</a> | 聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
     </footer>
 </body>
