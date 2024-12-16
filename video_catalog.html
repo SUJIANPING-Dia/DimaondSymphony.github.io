@@ -3,32 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影片播放</title>
+    <title>產品目錄 - 鑽之韻 DIAMOND SYMPHONY</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
             color: #e0e0e0;
-            text-align: center;
             padding: 20px;
+            margin: 0;
         }
-        video {
-            width: 100%;
-            max-width: 800px;
+        h1, h2 {
+            text-align: center;
+            color: #f4c150;
+        }
+        .category {
+            margin-top: 40px;
+        }
+        .category h2 {
             margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .gallery div {
+            background-color: #2b2b2b;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            text-align: center;
+            color: #bdbdbd;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .gallery div img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            margin-top: 50px;
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+            color: #bdbdbd;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #f4c150;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .consultation-button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #121212;
+            background-color: #f4c150;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .consultation-button:hover {
+            background-color: #d4a731;
         }
     </style>
 </head>
 <body>
-    <h1>影片播放</h1>
-    <video controls>
-        <source src="images/girl001.mp4" type="video/mp4">
-    </video>
-    <video controls>
-        <source src="images/man001.mp4" type="video/mp4">
-    </video>
-    <video controls>
-        <source src="images/man002.mp4" type="video/mp4">
-    </video>
+    <h1>產品目錄</h1>
+
+    <!-- 女戒 -->
+    <section class="category">
+        <h2>💍 女戒</h2>
+        <div class="gallery">
+            <div>圖片 1</div>
+            <div>圖片 2</div>
+            <div>圖片 3</div>
+            <div>圖片 4</div>
+            <div>圖片 5</div>
+            <div>圖片 6</div>
+            <div>圖片 7</div>
+            <div>圖片 8</div>
+            <div>圖片 9</div>
+            <div>圖片 10</div>
+        </div>
+    </section>
+
+    <!-- 男戒 -->
+    <section class="category">
+        <h2>💍 男戒</h2>
+        <div class="gallery">
+            <div>圖片 1</div>
+            <div>圖片 2</div>
+            <div>圖片 3</div>
+            <div>圖片 4</div>
+            <div>圖片 5</div>
+            <div>圖片 6</div>
+            <div>圖片 7</div>
+            <div>圖片 8</div>
+            <div>圖片 9</div>
+            <div>圖片 10</div>
+        </div>
+    </section>
+
+    <!-- 項鍊 -->
+    <section class="category">
+        <h2>📿 項鍊</h2>
+        <div class="gallery">
+            <div>圖片 1</div>
+            <div>圖片 2</div>
+            <div>圖片 3</div>
+            <div>圖片 4</div>
+            <div>圖片 5</div>
+            <div>圖片 6</div>
+            <div>圖片 7</div>
+            <div>圖片 8</div>
+            <div>圖片 9</div>
+            <div>圖片 10</div>
+        </div>
+    </section>
+
+    <!-- 耳環 -->
+    <section class="category">
+        <h2>👂 耳環</h2>
+        <div class="gallery">
+            <div>圖片 1</div>
+            <div>圖片 2</div>
+            <div>圖片 3</div>
+            <div>圖片 4</div>
+            <div>圖片 5</div>
+            <div>圖片 6</div>
+            <div>圖片 7</div>
+            <div>圖片 8</div>
+            <div>圖片 9</div>
+            <div>圖片 10</div>
+        </div>
+    </section>
+
+    <!-- 手鍊 -->
+    <section class="category">
+        <h2>🔗 手鍊</h2>
+        <div class="gallery">
+            <div>圖片 1</div>
+            <div>圖片 2</div>
+            <div>圖片 3</div>
+            <div>圖片 4</div>
+            <div>圖片 5</div>
+            <div>圖片 6</div>
+            <div>圖片 7</div>
+            <div>圖片 8</div>
+            <div>圖片 9</div>
+            <div>圖片 10</div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
+        <p>返回<a href="index.html">首頁</a> | 聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
+    </footer>
 </body>
 </html>
