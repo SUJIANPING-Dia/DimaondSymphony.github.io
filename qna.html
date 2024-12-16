@@ -27,7 +27,7 @@
         }
 
         main {
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
             padding: 30px;
             background: #1e1e1e;
@@ -43,30 +43,33 @@
         }
 
         .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             margin-bottom: 30px;
         }
 
         .category {
             background: #2e2e2e;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 10px;
             color: #f4c150;
             font-weight: bold;
+            text-align: center;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .category:hover {
             background: #f4c150;
             color: #121212;
+            transform: translateY(-3px);
         }
 
         .faq-section {
             display: none;
+            margin-top: 30px;
         }
 
         .faq-section.active {
@@ -75,6 +78,10 @@
 
         .faq-item {
             margin-bottom: 20px;
+            border: 1px solid #f4c150;
+            padding: 15px;
+            border-radius: 8px;
+            background: #2e2e2e;
         }
 
         .faq-item h3 {
@@ -101,6 +108,10 @@
         footer a {
             color: #f4c150;
         }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
     <script>
         function showSection(category) {
@@ -122,7 +133,7 @@
             <div class="category" onclick="showSection('natural-diamonds')">天然鑽石相關問題</div>
             <div class="category" onclick="showSection('lab-diamonds')">培育鑽石相關問題</div>
             <div class="category" onclick="showSection('custom-design')">客製化與設計服務</div>
-            <div class="category" onclick="showSection('shopping-support')">購物流程與售後服務</div>
+            <div class="category" onclick="showSection('shopping-support')">購物流程與售後</div>
             <div class="category" onclick="showSection('certifications')">鑽石證書與認證</div>
             <div class="category" onclick="showSection('pricing-and-budget')">價格與預算考量</div>
             <div class="category" onclick="showSection('care-and-cleaning')">保養與清潔</div>
