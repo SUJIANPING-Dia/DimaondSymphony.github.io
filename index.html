@@ -5,64 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>鑽之韻 DIAMOND SYMPHONY 官方連結</title>
     <style>
+        /* 全局樣式 */
         body {
-            font-family: "Arial", sans-serif;
+            font-family: "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 頁首樣式 */
         header {
-            background-color: #fff;
-            padding: 30px 20px;
+            background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
+            padding: 40px 20px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            color: #f4c150;
         }
 
         header h1 {
-            font-size: 2rem;
-            color: #d4af37;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         header p {
             font-size: 1rem;
-            line-height: 1.5;
+            margin-top: 15px;
+            line-height: 1.6;
             max-width: 700px;
-            margin: 0 auto;
-            color: #555;
+            margin: 15px auto 0;
+            color: #bdbdbd;
         }
 
+        /* 主要內容樣式 */
         main {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
 
         main h2 {
-            font-size: 1.5rem;
-            color: #d4af37;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
             text-align: center;
+            color: #f4c150;
+            margin-bottom: 30px;
         }
 
         main p {
             font-size: 1rem;
             line-height: 1.8;
-            margin-bottom: 20px;
-            color: #444;
+            color: #bdbdbd;
+            margin-bottom: 25px;
+            text-align: center;
         }
 
         .links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
         }
 
         .links a {
@@ -70,96 +79,84 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            color: #fff;
-            background-color: #d4af37;
-            border-radius: 8px;
-            padding: 20px 10px;
-            transition: background-color 0.3s;
-            text-align: center;
+            padding: 20px;
+            background: #2b2b2b;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .links a:hover {
-            background-color: #b18d30;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
 
         .links a .icon {
             font-size: 2rem;
+            color: #f4c150;
             margin-bottom: 10px;
         }
 
         .links a .platform {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             margin-bottom: 5px;
+            color: #ffffff;
         }
 
         .links a .desc {
             font-size: 0.9rem;
-            line-height: 1.4;
+            text-align: center;
+            color: #bdbdbd;
         }
 
-        /* 藍色小卡樣式覆蓋 */
         .links .catalog {
-            background-color: #4885ed; /* 您可自行調整藍色色碼 */
-        }
-
-        .links .catalog:hover {
             background-color: #3c75d4;
         }
 
-        .explanation, .services {
-            margin-top: 30px;
+        .links .catalog:hover {
+            background-color: #3162b2;
+        }
+
+        /* 表格與服務樣式 */
+        .services h3 {
+            font-size: 1.5rem;
+            color: #f4c150;
+            margin: 30px 0 20px;
         }
 
         .services table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .services table, .services th, .services td {
-            border: 1px solid #ddd;
-        }
-
-        .services th, .services td {
-            padding: 10px;
-            text-align: center;
+            border: 1px solid #444;
         }
 
         .services th {
-            background-color: #f5f5f5;
-            font-weight: bold;
+            padding: 10px;
+            background: #292929;
+            color: #f4c150;
         }
 
-        .services h3 {
-            font-size: 1.3rem;
-            color: #d4af37;
-            margin-bottom: 15px;
-            margin-top: 30px;
-        }
-
-        .services p {
-            margin-bottom: 15px;
+        .services td {
+            padding: 10px;
+            text-align: center;
+            color: #e0e0e0;
         }
 
         footer {
-            margin-top: 40px;
-            background: #fff;
+            background: #1f1f1f;
             padding: 20px;
             text-align: center;
-            color: #666;
             font-size: 0.9rem;
-            border-top: 1px solid #ddd;
-        }
-
-        footer p {
-            margin: 5px 0;
+            color: #bdbdbd;
         }
 
         footer a {
-            color: #666;
-            text-decoration: none;
+            color: #f4c150;
         }
 
         footer a:hover {
@@ -167,12 +164,16 @@
         }
 
         @media (max-width: 500px) {
-            main, header {
-                padding: 15px;
+            header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 20px;
             }
 
             main h2 {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             .links a {
@@ -180,11 +181,11 @@
             }
 
             .links a .icon {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             .links a .platform {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
 
             .links a .desc {
@@ -197,25 +198,25 @@
     <header>
         <h1>鑽之韻<br>DIAMOND SYMPHONY</h1>
         <p>
-            鑽之韻致力於以創新工藝與嚴謹品質，打造出優雅、獨特的鑽石精品。  
+            鑽之韻致力於以創新工藝與嚴謹品質，打造出優雅、獨特的鑽石精品。
             我們的品牌融合藝術與匠心，為您呈現珍貴的光芒與永恆的美麗。
         </p>
     </header>
     <main>
         <h2>官方連結</h2>
-        <p>透過以下平台，您可以隨時追蹤鑽之韻的最新消息、精彩影片、品牌活動與精美產品展示。我們用多元管道讓您更深入認識我們的品牌價值與創作理念。</p>
+        <p>透過以下平台，隨時追蹤鑽之韻的最新消息與精彩活動。</p>
         <div class="links">
-            <a href="https://www.youtube.com/@%E9%91%BD%E4%B9%8B%E9%9F%BBDIAMONDSYMPHONY/shorts" target="_blank">  
+            <a href="https://www.youtube.com/@%E9%91%BD%E4%B9%8B%E9%9F%BBDIAMONDSYMPHONY/shorts" target="_blank">
                 <div class="icon">📺</div>
                 <div class="platform">YouTube</div>
                 <div class="desc">精彩短影片</div>
             </a>
-            <a href="https://www.tiktok.com/@.diamond.symphony" target="_blank">  
+            <a href="https://www.tiktok.com/@.diamond.symphony" target="_blank">
                 <div class="icon">🎬</div>
                 <div class="platform">TikTok</div>
                 <div class="desc">趣味短影片</div>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61565776509572" target="_blank">  
+            <a href="https://www.facebook.com/profile.php?id=61565776509572" target="_blank">
                 <div class="icon">👍</div>
                 <div class="platform">Facebook</div>
                 <div class="desc">品牌資訊與活動</div>
@@ -230,7 +231,6 @@
                 <div class="platform">LINE</div>
                 <div class="desc">線上諮詢與新品訊息</div>
             </a>
-            <!-- 預留的產品目錄小卡（無連結功能，目前僅為預留） -->
             <a href="#" class="catalog">
                 <div class="icon">📦</div>
                 <div class="platform">產品目錄</div>
@@ -238,19 +238,9 @@
             </a>
         </div>
 
-        <section class="explanation">
-            <h2>為何追蹤我們？</h2>
-            <p><strong>YouTube</strong>：透過精選短影片，快速瀏覽最精緻的珠寶作品與品牌製作過程，體驗工匠們的卓越技術。</p>
-            <p><strong>TikTok</strong>：以輕鬆活潑的短影音，讓您更貼近品牌的日常創作故事與幕後花絮。</p>
-            <p><strong>Facebook</strong>：第一時間取得品牌新聞、優惠活動及展覽資訊，讓您不錯過任何最新訊息。</p>
-            <p><strong>Instagram</strong>：透過高質感影像欣賞多款設計理念與時尚搭配，啟發您的珠寶穿搭靈感。</p>
-            <p><strong>LINE 官方帳號</strong>：直接與我們的客服團隊互動，獲得專業諮詢及最新產品目錄。</p>
-        </section>
-
         <section class="services">
-            <h2>專業服務與據點資訊</h2>
-            <p>我們提供 GIA 認證之天然與培育鑽石定製服務，讓您能依據個人喜好與預算，打造獨一無二的珠寶飾品。</p>
-            <h3>可定製產品類型</h3>
+            <h3>專業服務</h3>
+            <p>我們提供 GIA 認證的天然與培育鑽石定製服務，打造獨一無二的珠寶。</p>
             <table>
                 <tr>
                     <th>戒指</th>
@@ -267,28 +257,24 @@
                     <td>◎</td>
                 </tr>
             </table>
-
-            <p>📩 有任何問題或預約需求，歡迎私訊小編！</p>
-            
-            <h3>營業據點與時間</h3>
+            <h3>據點與時間</h3>
             <p>
-                📍【台北辦公室】民生東路二段143號8F<br>
-                📍【台中鑽之璨門市】朝富路268號<br>
+                📍 台北辦公室：民生東路二段143號8F<br>
+                📍 台中門市：朝富路268號<br>
                 ⏰ 營業時間：11:00 - 19:00 (店休：週日 & 週一)
             </p>
-
             <h3>預約服務</h3>
             <p>
-                ☎️ 門市提供一對一服務，請至少提前一天預約。<br> 
-                🚗 24H全台專員服務 — 依照您的地點與時間安排專員服務，讓您輕鬆安心選購。
+                ☎️ 提供一對一服務，請至少提前一天預約。<br>
+                🚗 24H全台服務，專員上門為您服務。
             </p>
         </section>
     </main>
     <footer>
-        <p>聯繫方式：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
+        <p>聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
         <p>電話：0979 517 176</p>
         <p>地址：台北市民生東路二段143號8樓</p>
-        <p>© 2024 鑽之韻 DIAMOND SYMPHONY. All Rights Reserved.</p>
+        <p>&copy; 2024 鑽之韻 DIAMOND SYMPHONY. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
