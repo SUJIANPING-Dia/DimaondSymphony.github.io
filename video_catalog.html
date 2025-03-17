@@ -119,6 +119,7 @@
       margin-bottom: 15px;
       border-radius: 5px;
     }
+    /* 關閉X圖示 (可留著同時使用) */
     .close {
       color: #ccc;
       font-size: 1.5rem;
@@ -130,12 +131,31 @@
     .close:hover {
       color: #fff;
     }
+
+    /* 額外增加的「關閉」按鈕 */
+    .close-btn {
+      background-color: #f4c150;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #121212;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto; /* 置中 */
+      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #d4a731;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>產品目錄</h1>
-    <p>在此處瀏覽各式珠寶作品，點擊分類以查看更多。</p>
+    <p>在此瀏覽各式珠寶作品，點擊分類以查看更多。<br>您可以點擊右上角「X」或下方「關閉」按鈕返回。</p>
   </header>
 
   <!-- === 分類按鈕 === -->
@@ -150,44 +170,109 @@
   <!-- =================================================================== -->
   <!-- =========================== 女 戒 ================================ -->
   <!-- =================================================================== -->
-  <section id="female-ring" class="category-content">
-    <h2>女戒</h2>
-    <div class="image-grid">
-      <!-- 女戒1 - 縮圖 -->
-      <div class="image-grid-item" onclick="openModal('modal_femaleRing1')">
-        <img src="images/female-ring1 (1).png" alt="女戒1" />
-      </div>
-      <!-- 女戒2 - 縮圖 -->
-      <div class="image-grid-item" onclick="openModal('modal_femaleRing2')">
-        <img src="images/female-ring2 (1).png" alt="女戒2" />
-      </div>
-      <!-- 女戒3 - 縮圖 -->
-      <div class="image-grid-item" onclick="openModal('modal_femaleRing3')">
-        <img src="images/female-ring3 (1).png" alt="女戒3" />
-      </div>
-      <!-- 女戒4 - 縮圖 -->
-      <div class="image-grid-item" onclick="openModal('modal_femaleRing4')">
-        <img src="images/female-ring4 (1).png" alt="女戒4" />
-      </div>
+<section id="female-ring" class="category-content">
+  <h2>女戒</h2>
+  <div class="image-grid">
+    <!-- 女戒1 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing1')">
+      <img src="images/female-ring1 (1).png" alt="女戒1" />
     </div>
-  </section>
+    <!-- 女戒2 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing2')">
+      <img src="images/female-ring2 (1).png" alt="女戒2" />
+    </div>
+    <!-- 女戒3 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing3')">
+      <img src="images/female-ring3 (1).png" alt="女戒3" />
+    </div>
+    <!-- 女戒4 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing4')">
+      <img src="images/female-ring4 (1).png" alt="女戒4" />
+    </div>
+    <!-- 女戒5 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing5')">
+      <img src="images/female-ring5 (1).png" alt="女戒5" />
+    </div>
+    <!-- 女戒6 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing6')">
+      <img src="images/female-ring6 (1).png" alt="女戒6" />
+    </div>
+    <!-- 女戒7 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing7')">
+      <img src="images/female-ring7 (1).png" alt="女戒7" />
+    </div>
+    <!-- 女戒8 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing8')">
+      <img src="images/female-ring8 (1).png" alt="女戒8" />
+    </div>
+    <!-- 女戒9 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing9')">
+      <img src="images/female-ring9 (1).png" alt="女戒9" />
+    </div>
+    <!-- 女戒10 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing10')">
+      <img src="images/female-ring10 (1).png" alt="女戒10" />
+    </div>
+    <!-- 女戒11 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing11')">
+      <img src="images/female-ring11 (1).png" alt="女戒11" />
+    </div>
+    <!-- 女戒12 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing12')">
+      <img src="images/female-ring12 (1).png" alt="女戒12" />
+    </div>
+    <!-- 女戒13 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing13')">
+      <img src="images/female-ring13 (1).png" alt="女戒13" />
+    </div>
+    <!-- 女戒14 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing14')">
+      <img src="images/female-ring14 (1).png" alt="女戒14" />
+    </div>
+    <!-- 女戒15 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_femaleRing15')">
+      <img src="images/female-ring15 (1).png" alt="女戒15" />
+    </div>
+  </div>
+</section>
 
   <!-- =================================================================== -->
   <!-- =========================== 男 戒 ================================ -->
   <!-- =================================================================== -->
-  <section id="male-ring" class="category-content">
-    <h2>男戒</h2>
-    <div class="image-grid">
-      <!-- 男戒1 - 縮圖 -->
-      <div class="image-grid-item" onclick="openModal('modal_maleRing1')">
-        <img src="images/male-ring1(1).png" alt="男戒1" />
-      </div>
-      <!-- 男戒2 - 縮圖 -->
-      <div class="image-grid-item" onclick="openModal('modal_maleRing2')">
-        <img src="images/male-ring2(1).png" alt="男戒2" />
-      </div>
+<section id="male-ring" class="category-content">
+  <h2>男戒</h2>
+  <div class="image-grid">
+    <!-- 男戒1 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing1')">
+      <img src="images/male-ring1 (1).png" alt="男戒1" />
     </div>
-  </section>
+    <!-- 男戒2 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing2')">
+      <img src="images/male-ring2 (1).png" alt="男戒2" />
+    </div>
+    <!-- 男戒3 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing3')">
+      <img src="images/male-ring3 (1).png" alt="男戒3" />
+    </div>
+    <!-- 男戒4 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing4')">
+      <img src="images/male-ring4 (1).png" alt="男戒4" />
+    </div>
+    <!-- 男戒5 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing5')">
+      <img src="images/male-ring5 (1).png" alt="男戒5" />
+    </div>
+    <!-- 男戒6 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing6')">
+      <img src="images/male-ring6 (1).png" alt="男戒6" />
+    </div>
+    <!-- 男戒7 - 縮圖 -->
+    <div class="image-grid-item" onclick="openModal('modal_maleRing7')">
+      <img src="images/male-ring7 (1).png" alt="男戒7" />
+    </div>
+  </div>
+</section>
+
 
   <!-- =================================================================== -->
   <!-- =========================== 項 鍊 ================================ -->
@@ -241,43 +326,170 @@
   </section>
 
   <!-- =========================== Modal區 ============================== -->
-  <!--  女戒 Modal (1~4款)  -------------------------------------------->
+  <!--  女戒 Modal (1~15款)  -------------------------------------------->
   <div id="modal_femaleRing1" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal_femaleRing1')">&times;</span>
-      <!-- 細節照 (2)(3)(4) -->
-      <img src="images/female-ring1 (2).png" alt="女戒1 - 細節1" />
-      <img src="images/female-ring1 (3).png" alt="女戒1 - 細節2" />
-      <img src="images/female-ring1 (4).png" alt="女戒1 - 細節3" />
-    </div>
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing1')">&times;</span>
+    <img src="images/female-ring1 (2).png" alt="女戒1 - 細節1" />
+    <img src="images/female-ring1 (3).png" alt="女戒1 - 細節2" />
+    <img src="images/female-ring1 (4).png" alt="女戒1 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing1')">關閉</button>
   </div>
+</div>
 
-  <div id="modal_femaleRing2" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal_femaleRing2')">&times;</span>
-      <img src="images/female-ring2 (2).png" alt="女戒2 - 細節1" />
-      <img src="images/female-ring2 (3).png" alt="女戒2 - 細節2" />
-      <img src="images/female-ring2 (4).png" alt="女戒2 - 細節3" />
-    </div>
+<!-- 女戒2 -->
+<div id="modal_femaleRing2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing2')">&times;</span>
+    <img src="images/female-ring2 (2).png" alt="女戒2 - 細節1" />
+    <img src="images/female-ring2 (3).png" alt="女戒2 - 細節2" />
+    <img src="images/female-ring2 (4).png" alt="女戒2 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing2')">關閉</button>
   </div>
+</div>
 
-  <div id="modal_femaleRing3" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal_femaleRing3')">&times;</span>
-      <img src="images/female-ring3 (2).png" alt="女戒3 - 細節1" />
-      <img src="images/female-ring3 (3).png" alt="女戒3 - 細節2" />
-      <img src="images/female-ring3 (4).png" alt="女戒3 - 細節3" />
-    </div>
+<!-- 女戒3 -->
+<div id="modal_femaleRing3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing3')">&times;</span>
+    <img src="images/female-ring3 (2).png" alt="女戒3 - 細節1" />
+    <img src="images/female-ring3 (3).png" alt="女戒3 - 細節2" />
+    <img src="images/female-ring3 (4).png" alt="女戒3 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing3')">關閉</button>
   </div>
+</div>
 
-  <div id="modal_femaleRing4" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal_femaleRing4')">&times;</span>
-      <img src="images/female-ring4 (2).png" alt="女戒4 - 細節1" />
-      <img src="images/female-ring4 (3).png" alt="女戒4 - 細節2" />
-      <img src="images/female-ring4 (4).png" alt="女戒4 - 細節3" />
-    </div>
+<!-- 女戒4 -->
+<div id="modal_femaleRing4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing4')">&times;</span>
+    <img src="images/female-ring4 (2).png" alt="女戒4 - 細節1" />
+    <img src="images/female-ring4 (3).png" alt="女戒4 - 細節2" />
+    <img src="images/female-ring4 (4).png" alt="女戒4 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing4')">關閉</button>
   </div>
+</div>
+
+<!-- 女戒5 -->
+<div id="modal_femaleRing5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing5')">&times;</span>
+    <img src="images/female-ring5 (2).png" alt="女戒5 - 細節1" />
+    <img src="images/female-ring5 (3).png" alt="女戒5 - 細節2" />
+    <img src="images/female-ring5 (4).png" alt="女戒5 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing5')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒6 -->
+<div id="modal_femaleRing6" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing6')">&times;</span>
+    <img src="images/female-ring6 (2).png" alt="女戒6 - 細節1" />
+    <img src="images/female-ring6 (3).png" alt="女戒6 - 細節2" />
+    <img src="images/female-ring6 (4).png" alt="女戒6 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing6')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒7 -->
+<div id="modal_femaleRing7" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing7')">&times;</span>
+    <img src="images/female-ring7 (2).png" alt="女戒7 - 細節1" />
+    <img src="images/female-ring7 (3).png" alt="女戒7 - 細節2" />
+    <img src="images/female-ring7 (4).png" alt="女戒7 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing7')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒8 -->
+<div id="modal_femaleRing8" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing8')">&times;</span>
+    <img src="images/female-ring8 (2).png" alt="女戒8 - 細節1" />
+    <img src="images/female-ring8 (3).png" alt="女戒8 - 細節2" />
+    <img src="images/female-ring8 (4).png" alt="女戒8 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing8')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒9 -->
+<div id="modal_femaleRing9" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing9')">&times;</span>
+    <img src="images/female-ring9 (2).png" alt="女戒9 - 細節1" />
+    <img src="images/female-ring9 (3).png" alt="女戒9 - 細節2" />
+    <img src="images/female-ring9 (4).png" alt="女戒9 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing9')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒10 -->
+<div id="modal_femaleRing10" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing10')">&times;</span>
+    <img src="images/female-ring10 (2).png" alt="女戒10 - 細節1" />
+    <img src="images/female-ring10 (3).png" alt="女戒10 - 細節2" />
+    <img src="images/female-ring10 (4).png" alt="女戒10 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing10')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒11 -->
+<div id="modal_femaleRing11" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing11')">&times;</span>
+    <img src="images/female-ring11 (2).png" alt="女戒11 - 細節1" />
+    <img src="images/female-ring11 (3).png" alt="女戒11 - 細節2" />
+    <img src="images/female-ring11 (4).png" alt="女戒11 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing11')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒12 -->
+<div id="modal_femaleRing12" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing12')">&times;</span>
+    <img src="images/female-ring12 (2).png" alt="女戒12 - 細節1" />
+    <img src="images/female-ring12 (3).png" alt="女戒12 - 細節2" />
+    <img src="images/female-ring12 (4).png" alt="女戒12 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing12')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒13 -->
+<div id="modal_femaleRing13" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing13')">&times;</span>
+    <img src="images/female-ring13 (2).png" alt="女戒13 - 細節1" />
+    <img src="images/female-ring13 (3).png" alt="女戒13 - 細節2" />
+    <img src="images/female-ring13 (4).png" alt="女戒13 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing13')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒14 -->
+<div id="modal_femaleRing14" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing14')">&times;</span>
+    <img src="images/female-ring14 (2).png" alt="女戒14 - 細節1" />
+    <img src="images/female-ring14 (3).png" alt="女戒14 - 細節2" />
+    <img src="images/female-ring14 (4).png" alt="女戒14 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing14')">關閉</button>
+  </div>
+</div>
+
+<!-- 女戒15 -->
+<div id="modal_femaleRing15" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal_femaleRing15')">&times;</span>
+    <img src="images/female-ring15 (2).png" alt="女戒15 - 細節1" />
+    <img src="images/female-ring15 (3).png" alt="女戒15 - 細節2" />
+    <img src="images/female-ring15 (4).png" alt="女戒15 - 細節3" />
+    <button class="close-btn" onclick="closeModal('modal_femaleRing15')">關閉</button>
+  </div>
+</div>
 
   <!--  男戒 Modal (示範2款)  ------------------------------------------>
   <div id="modal_maleRing1" class="modal">
@@ -286,6 +498,7 @@
       <img src="images/male-ring1(2).png" alt="男戒1 - 細節1" />
       <img src="images/male-ring1(3).png" alt="男戒1 - 細節2" />
       <img src="images/male-ring1(4).png" alt="男戒1 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_maleRing1')">關閉</button>
     </div>
   </div>
 
@@ -295,6 +508,7 @@
       <img src="images/male-ring2(2).png" alt="男戒2 - 細節1" />
       <img src="images/male-ring2(3).png" alt="男戒2 - 細節2" />
       <img src="images/male-ring2(4).png" alt="男戒2 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_maleRing2')">關閉</button>
     </div>
   </div>
 
@@ -305,6 +519,7 @@
       <img src="images/necklace1(2).png" alt="項鍊1 - 細節1" />
       <img src="images/necklace1(3).png" alt="項鍊1 - 細節2" />
       <img src="images/necklace1(4).png" alt="項鍊1 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_necklace1')">關閉</button>
     </div>
   </div>
 
@@ -314,6 +529,7 @@
       <img src="images/necklace2(2).png" alt="項鍊2 - 細節1" />
       <img src="images/necklace2(3).png" alt="項鍊2 - 細節2" />
       <img src="images/necklace2(4).png" alt="項鍊2 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_necklace2')">關閉</button>
     </div>
   </div>
 
@@ -324,6 +540,7 @@
       <img src="images/bracelet1(2).png" alt="手鍊1 - 細節1" />
       <img src="images/bracelet1(3).png" alt="手鍊1 - 細節2" />
       <img src="images/bracelet1(4).png" alt="手鍊1 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_bracelet1')">關閉</button>
     </div>
   </div>
 
@@ -333,6 +550,7 @@
       <img src="images/bracelet2(2).png" alt="手鍊2 - 細節1" />
       <img src="images/bracelet2(3).png" alt="手鍊2 - 細節2" />
       <img src="images/bracelet2(4).png" alt="手鍊2 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_bracelet2')">關閉</button>
     </div>
   </div>
 
@@ -343,6 +561,7 @@
       <img src="images/earring1(2).png" alt="耳環1 - 細節1" />
       <img src="images/earring1(3).png" alt="耳環1 - 細節2" />
       <img src="images/earring1(4).png" alt="耳環1 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_earring1')">關閉</button>
     </div>
   </div>
 
@@ -352,6 +571,7 @@
       <img src="images/earring2(2).png" alt="耳環2 - 細節1" />
       <img src="images/earring2(3).png" alt="耳環2 - 細節2" />
       <img src="images/earring2(4).png" alt="耳環2 - 細節3" />
+      <button class="close-btn" onclick="closeModal('modal_earring2')">關閉</button>
     </div>
   </div>
 
