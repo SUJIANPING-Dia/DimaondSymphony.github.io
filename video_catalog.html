@@ -1,237 +1,401 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鑽之韻 DIAMOND SYMPHONY 官方連結</title>
-    <style>
-        /* --- 基本樣式 --- */
-        body {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>產品目錄 - 鑽之韻 DIAMOND SYMPHONY</title>
+  <style>
+    /* === 基本排版 & 風格 === */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #e0e0e0;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1, h2 {
+      color: #f4c150;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
+      padding: 30px 20px;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
 
-        /* --- 頁首樣式 --- */
-        header {
-            background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
-            padding: 40px 20px;
-            text-align: center;
-            color: #f4c150;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        header p {
-            font-size: 1rem;
-            margin: 15px auto 0;
-            line-height: 1.6;
-            max-width: 700px;
-            color: #bdbdbd;
-        }
-        .consultation-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #121212;
-            background-color: #f4c150;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .consultation-button:hover {
-            background-color: #d4a731;
-            transform: translateY(-3px);
-        }
+    /* === 分類按鈕 === */
+    .category-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+    .category-nav button {
+      background-color: #2b2b2b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #f4c150;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .category-nav button:hover {
+      background-color: #f4c150;
+      color: #121212;
+      transform: translateY(-3px);
+    }
 
-        /* --- 主要內容樣式 --- */
-        main {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background: #1e1e1e;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-        }
-        main h2 {
-            font-size: 1.8rem;
-            text-align: center;
-            color: #f4c150;
-            margin-bottom: 30px;
-        }
-        main p {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            text-align: center;
-            color: #bdbdbd;
-        }
+    /* === 內容區塊 === */
+    .category-content {
+      display: none; /* 預設隱藏，點擊分類後再顯示 */
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+    .category-content.active {
+      display: block;
+    }
 
-        /* --- 分類標籤樣式 --- */
-        .tab-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .tab {
-            padding: 10px 20px;
-            background: #2b2b2b;
-            color: #f4c150;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-            font-weight: bold;
-        }
-        .tab:hover, .tab.active {
-            background: #f4c150;
-            color: #121212;
-        }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .image-grid-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 10px;
+      background: #2b2b2b;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .image-grid-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+    .image-grid-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        /* --- 內容區域樣式 --- */
-        .content {
-            display: none;
-            text-align: center;
-        }
-        .content.active {
-            display: block;
-        }
-
-        /* --- 圖庫樣式 --- */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 0 20px;
-        }
-        .gallery div {
-            background-color: #2b2b2b;
-            border-radius: 10px;
-            text-align: center;
-            color: #bdbdbd;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            padding: 10px;
-        }
-        .gallery div img {
-            max-width: 100%;
-            max-height: 100px;
-            margin-bottom: 5px;
-        }
-
-        /* --- 頁尾樣式 --- */
-        footer {
-            background: #1f1f1f;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #bdbdbd;
-        }
-        footer a {
-            color: #f4c150;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-    <script>
-        /* --- 切換內容的功能 --- */
-        function showContent(tabId) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-        }
-    </script>
+    /* === Modal (點擊圖片放大) === */
+    .modal {
+      display: none; /* 隱藏 */
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      max-width: 600px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .modal-content img {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+    .close {
+      color: #ccc;
+      font-size: 1.5rem;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-    <!-- 頁首 -->
-    <header>
-        <h1>鑽之韻<br>DIAMOND SYMPHONY</h1>
-        <p>
-            鑽之韻致力於以創新工藝與嚴謹品質，打造出優雅、獨特的鑽石精品。
-            我們的品牌融合藝術與匠心，為您呈現珍貴的光芒與永恆的美麗。
-        </p>
-        <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
-    </header>
+  <header>
+    <h1>產品目錄</h1>
+    <p>在此處瀏覽各式珠寶作品，點擊分類以查看更多。</p>
+  </header>
 
-    <!-- 主要內容 -->
-    <main>
-        <div class="tab-container">
-            <div class="tab active" data-tab="women-rings" onclick="showContent('women-rings')">女戒</div>
-            <div class="tab" data-tab="men-rings" onclick="showContent('men-rings')">男戒</div>
-            <div class="tab" data-tab="necklaces" onclick="showContent('necklaces')">項鍊</div>
-            <div class="tab" data-tab="earrings" onclick="showContent('earrings')">耳環</div>
-            <div class="tab" data-tab="bracelets" onclick="showContent('bracelets')">手鍊</div>
-        </div>
+  <!-- === 分類按鈕 === -->
+  <div class="category-nav">
+    <button onclick="showCategory('female-ring')">女戒</button>
+    <button onclick="showCategory('male-ring')">男戒</button>
+    <button onclick="showCategory('necklace')">項鍊</button>
+    <button onclick="showCategory('bracelet')">手鍊</button>
+    <button onclick="showCategory('earring')">耳環</button>
+  </div>
 
-        <!-- 內容分區 -->
-        <div id="women-rings" class="content active">
-            <h2>💍 女戒</h2>
-            <div class="gallery">
-                <!-- 圖片區 -->
-                <div>
-                    <img src="images/001_A.jpg" alt="女戒圖片 1">
-                    <p>編號 001</p>
-                </div>
-                <div>
-                    <img src="images/002_A.jpg" alt="女戒圖片 2">
-                    <p>編號 002</p>
-                </div>
-                <div>
-                    <img src="images/003_A.jpg" alt="女戒圖片 3">
-                    <p>編號 003</p>
-                </div>
-                <div>
-                    <img src="images/004_A.jpg" alt="女戒圖片 4">
-                    <p>編號 004</p>
-                </div>
-                <div>
-                    <img src="images/005_A.jpg" alt="女戒圖片 5">
-                    <p>編號 005</p>
-                </div>
-                <div>
-                    <img src="images/006_A.jpg" alt="女戒圖片 6">
-                    <p>編號 006</p>
-                </div>
-                <div>
-                    <img src="images/007_A.jpg" alt="女戒圖片 7">
-                    <p>編號 007</p>
-                </div>
-                <div>
-                    <img src="images/008_A.jpg" alt="女戒圖片 8">
-                    <p>編號 008</p>
-                </div>
-                <!-- 可重複新增 -->
-            </div>
-        </div>
-        
-        <div id="men-rings" class="content">
-            <h2>💍 男戒</h2>
-            <div class="gallery">
-                <!-- 圖片區 -->
-                <div>
-                    <img src="images/B001_A.jpg" alt="男戒圖片 1">
-                    <p>編號 001</p>
-                </div>
-        <!-- 其他類別按需新增 -->
-    </main>
+  <!-- =================================================================== -->
+  <!-- =========================== 女 戒 ================================ -->
+  <!-- =================================================================== -->
+  <section id="female-ring" class="category-content">
+    <h2>女戒</h2>
+    <div class="image-grid">
+      <!-- 女戒1 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_femaleRing1')">
+        <img src="images/female-ring1 (1).png" alt="女戒1" />
+      </div>
+      <!-- 女戒2 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_femaleRing2')">
+        <img src="images/female-ring2 (1).png" alt="女戒2" />
+      </div>
+      <!-- 女戒3 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_femaleRing3')">
+        <img src="images/female-ring3 (1).png" alt="女戒3" />
+      </div>
+      <!-- 女戒4 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_femaleRing4')">
+        <img src="images/female-ring4 (1).png" alt="女戒4" />
+      </div>
+    </div>
+  </section>
 
-    <!-- 頁尾 -->
-    <footer>
-        <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
-        <p>返回<a href="index.html">首頁</a> | 聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
-    </footer>
+  <!-- =================================================================== -->
+  <!-- =========================== 男 戒 ================================ -->
+  <!-- =================================================================== -->
+  <section id="male-ring" class="category-content">
+    <h2>男戒</h2>
+    <div class="image-grid">
+      <!-- 男戒1 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_maleRing1')">
+        <img src="images/male-ring1(1).png" alt="男戒1" />
+      </div>
+      <!-- 男戒2 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_maleRing2')">
+        <img src="images/male-ring2(1).png" alt="男戒2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- =========================== 項 鍊 ================================ -->
+  <!-- =================================================================== -->
+  <section id="necklace" class="category-content">
+    <h2>項鍊</h2>
+    <div class="image-grid">
+      <!-- 項鍊1 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_necklace1')">
+        <img src="images/necklace1(1).png" alt="項鍊1" />
+      </div>
+      <!-- 項鍊2 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_necklace2')">
+        <img src="images/necklace2(1).png" alt="項鍊2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- =========================== 手 鍊 ================================ -->
+  <!-- =================================================================== -->
+  <section id="bracelet" class="category-content">
+    <h2>手鍊</h2>
+    <div class="image-grid">
+      <!-- 手鍊1 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_bracelet1')">
+        <img src="images/bracelet1(1).png" alt="手鍊1" />
+      </div>
+      <!-- 手鍊2 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_bracelet2')">
+        <img src="images/bracelet2(1).png" alt="手鍊2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- =========================== 耳 環 ================================ -->
+  <!-- =================================================================== -->
+  <section id="earring" class="category-content">
+    <h2>耳環</h2>
+    <div class="image-grid">
+      <!-- 耳環1 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_earring1')">
+        <img src="images/earring1(1).png" alt="耳環1" />
+      </div>
+      <!-- 耳環2 - 縮圖 -->
+      <div class="image-grid-item" onclick="openModal('modal_earring2')">
+        <img src="images/earring2(1).png" alt="耳環2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== Modal區 ============================== -->
+  <!--  女戒 Modal (1~4款)  -------------------------------------------->
+  <div id="modal_femaleRing1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_femaleRing1')">&times;</span>
+      <!-- 細節照 (2)(3)(4) -->
+      <img src="images/female-ring1(2).png" alt="女戒1 - 細節1" />
+      <img src="images/female-ring1(3).png" alt="女戒1 - 細節2" />
+      <img src="images/female-ring1(4).png" alt="女戒1 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_femaleRing2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_femaleRing2')">&times;</span>
+      <img src="images/female-ring2(2).png" alt="女戒2 - 細節1" />
+      <img src="images/female-ring2(3).png" alt="女戒2 - 細節2" />
+      <img src="images/female-ring2(4).png" alt="女戒2 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_femaleRing3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_femaleRing3')">&times;</span>
+      <img src="images/female-ring3(2).png" alt="女戒3 - 細節1" />
+      <img src="images/female-ring3(3).png" alt="女戒3 - 細節2" />
+      <img src="images/female-ring3(4).png" alt="女戒3 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_femaleRing4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_femaleRing4')">&times;</span>
+      <img src="images/female-ring4(2).png" alt="女戒4 - 細節1" />
+      <img src="images/female-ring4(3).png" alt="女戒4 - 細節2" />
+      <img src="images/female-ring4(4).png" alt="女戒4 - 細節3" />
+    </div>
+  </div>
+
+  <!--  男戒 Modal (示範2款)  ------------------------------------------>
+  <div id="modal_maleRing1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_maleRing1')">&times;</span>
+      <img src="images/male-ring1(2).png" alt="男戒1 - 細節1" />
+      <img src="images/male-ring1(3).png" alt="男戒1 - 細節2" />
+      <img src="images/male-ring1(4).png" alt="男戒1 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_maleRing2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_maleRing2')">&times;</span>
+      <img src="images/male-ring2(2).png" alt="男戒2 - 細節1" />
+      <img src="images/male-ring2(3).png" alt="男戒2 - 細節2" />
+      <img src="images/male-ring2(4).png" alt="男戒2 - 細節3" />
+    </div>
+  </div>
+
+  <!--  項鍊 Modal (示範2款)  ------------------------------------------>
+  <div id="modal_necklace1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_necklace1')">&times;</span>
+      <img src="images/necklace1(2).png" alt="項鍊1 - 細節1" />
+      <img src="images/necklace1(3).png" alt="項鍊1 - 細節2" />
+      <img src="images/necklace1(4).png" alt="項鍊1 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_necklace2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_necklace2')">&times;</span>
+      <img src="images/necklace2(2).png" alt="項鍊2 - 細節1" />
+      <img src="images/necklace2(3).png" alt="項鍊2 - 細節2" />
+      <img src="images/necklace2(4).png" alt="項鍊2 - 細節3" />
+    </div>
+  </div>
+
+  <!--  手鍊 Modal (示範2款)  ------------------------------------------>
+  <div id="modal_bracelet1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_bracelet1')">&times;</span>
+      <img src="images/bracelet1(2).png" alt="手鍊1 - 細節1" />
+      <img src="images/bracelet1(3).png" alt="手鍊1 - 細節2" />
+      <img src="images/bracelet1(4).png" alt="手鍊1 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_bracelet2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_bracelet2')">&times;</span>
+      <img src="images/bracelet2(2).png" alt="手鍊2 - 細節1" />
+      <img src="images/bracelet2(3).png" alt="手鍊2 - 細節2" />
+      <img src="images/bracelet2(4).png" alt="手鍊2 - 細節3" />
+    </div>
+  </div>
+
+  <!--  耳環 Modal (示範2款)  ------------------------------------------>
+  <div id="modal_earring1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_earring1')">&times;</span>
+      <img src="images/earring1(2).png" alt="耳環1 - 細節1" />
+      <img src="images/earring1(3).png" alt="耳環1 - 細節2" />
+      <img src="images/earring1(4).png" alt="耳環1 - 細節3" />
+    </div>
+  </div>
+
+  <div id="modal_earring2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal_earring2')">&times;</span>
+      <img src="images/earring2(2).png" alt="耳環2 - 細節1" />
+      <img src="images/earring2(3).png" alt="耳環2 - 細節2" />
+      <img src="images/earring2(4).png" alt="耳環2 - 細節3" />
+    </div>
+  </div>
+
+  <!-- ====================== JavaScript 區域 ====================== -->
+  <script>
+    // 切換分類：先隱藏所有，再顯示對應ID
+    function showCategory(categoryId) {
+      const categories = document.querySelectorAll('.category-content');
+      categories.forEach((cat) => {
+        cat.classList.remove('active');
+      });
+      const target = document.getElementById(categoryId);
+      if (target) {
+        target.classList.add('active');
+        // 可選：自動捲動到頂部
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // 開啟 Modal
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'block';
+      }
+    }
+
+    // 關閉 Modal
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // 點擊背景區域關閉 Modal
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach((modal) => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    };
+  </script>
 </body>
 </html>
