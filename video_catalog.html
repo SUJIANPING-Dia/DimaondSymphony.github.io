@@ -1,19 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>產品目錄 - 鑽之韻 DIAMOND SYMPHONY</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>鑽之韻 DIAMOND SYMPHONY 官方連結</title>
   <style>
-    /* 基本樣式 */
+    /* =============== 來自引用程式碼的全局與header/footer樣式 =============== */
     body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #121212;
-      font-family: "Helvetica Neue", Arial, sans-serif;
       color: #e0e0e0;
       text-align: center;
     }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
+      padding: 40px 20px;
+      text-align: center;
+      color: #f4c150;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1rem;
+      margin-top: 15px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 15px auto 0;
+      color: #bdbdbd;
+    }
+
+    .consultation-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #121212;
+      background-color: #f4c150;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .consultation-button:hover {
+      background-color: #d4a731;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #bdbdbd;
+    }
+
+    footer a {
+      color: #f4c150;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* =============== 目錄網站的 Tabs + Gallery 相關樣式 =============== */
 
     /* 分頁籤 (Tabs) 樣式 */
     .tabs {
@@ -136,40 +200,69 @@
     .close:hover {
       color: #fff;
     }
+
+    /* 讓 main 保持一些間距 */
+    main {
+      padding-bottom: 40px;
+    }
   </style>
 </head>
 <body>
+  <!-- ========== 頁首 (來自參考程式碼) ========== -->
+  <header>
+    <h1>鑽之韻<br>DIAMOND SYMPHONY</h1>
+    <p>
+      鑽之韻致力於以創新工藝與嚴謹品質，打造出優雅、獨特的鑽石精品。<br>
+      我們的品牌融合藝術與匠心，為您呈現珍貴的光芒與永恆的美麗。
+    </p>
+    <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
+  </header>
 
-  <!-- 分頁籤 (Tabs) -->
-  <div class="tabs">
-    <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
-    <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
-    <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
-  </div>
+  <!-- ========== 主體區域 ========== -->
+  <main>
 
-  <!-- 女戒頁籤內容 -->
-  <div id="femaleTab" class="tab-content">
-    <div class="product-gallery" id="female-gallery"></div>
-  </div>
-
-  <!-- 男戒頁籤內容 -->
-  <div id="maleTab" class="tab-content">
-    <div class="product-gallery" id="male-gallery"></div>
-  </div>
-
-  <!-- 項鍊頁籤內容 -->
-  <div id="necklaceTab" class="tab-content">
-    <div class="product-gallery" id="necklace-gallery"></div>
-  </div>
-
-  <!-- Modal 彈窗 -->
-  <div id="image-modal" class="modal" onclick="closeModal()">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <img id="modal-image" src="" alt="放大圖片" />
+    <!-- ========== 分頁籤 (Tabs) ========== -->
+    <div class="tabs">
+      <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
+      <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
+      <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
     </div>
-  </div>
 
+    <!-- 女戒頁籤內容 -->
+    <div id="femaleTab" class="tab-content">
+      <div class="product-gallery" id="female-gallery"></div>
+    </div>
+
+    <!-- 男戒頁籤內容 -->
+    <div id="maleTab" class="tab-content">
+      <div class="product-gallery" id="male-gallery"></div>
+    </div>
+
+    <!-- 項鍊頁籤內容 -->
+    <div id="necklaceTab" class="tab-content">
+      <div class="product-gallery" id="necklace-gallery"></div>
+    </div>
+
+    <!-- Modal 彈窗 -->
+    <div id="image-modal" class="modal" onclick="closeModal()">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modal-image" src="" alt="放大圖片" />
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== 網頁最後的結尾資訊 (來自參考程式碼) ========== -->
+  <footer>
+    <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
+    <p>聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
+    <p>電話：0979 517 176</p>
+    <p>地址：台北市民生東路二段143號8樓</p>
+    <p>&copy; 2024 鑽之韻 DIAMOND SYMPHONY. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ========== JavaScript 功能區 ========== -->
   <script>
     // 頁籤切換功能
     function showTab(tabId) {
@@ -183,7 +276,7 @@
       if (target) {
         target.classList.add('active');
       }
-      // 自動捲動到頁面頂部（可選）
+      // 自動捲動到頁面頂部
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -215,7 +308,7 @@
       document.getElementById('image-modal').style.display = 'none';
     }
 
-    // === 產生 女戒 (12顆，每顆4張) ===
+    // === 產生 女戒 ===
     const femaleGallery = document.getElementById('female-gallery');
     for (let i = 1; i <= 12; i++) {
       const ringSet = document.createElement('div');
@@ -257,7 +350,7 @@
       femaleGallery.appendChild(ringSet);
     }
 
-    // === 產生 男戒 (7顆，每顆4張) ===
+    // === 產生 男戒 ===
     const maleGallery = document.getElementById('male-gallery');
     for (let i = 1; i <= 7; i++) {
       const ringSet = document.createElement('div');
@@ -310,7 +403,7 @@
       title.textContent = `項鍊${i}`;
       ringSet.appendChild(title);
 
-      // 主圖
+      // 主圖 (j=1)
       const mainImageDiv = document.createElement('div');
       mainImageDiv.className = 'main-image';
       const mainImg = document.createElement('img');
@@ -341,8 +434,9 @@
       necklaceGallery.appendChild(ringSet);
     }
 
-    // 預設顯示女戒
+    // 預設顯示「女戒」
     showTab('femaleTab');
   </script>
+
 </body>
 </html>
