@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>產品目錄 - 鑽之韻 DIAMOND SYMPHONY</title>
   <style>
     body {
@@ -13,15 +13,15 @@
       color: #e0e0e0;
       text-align: center;
     }
-    
+
     .product-gallery {
       margin-top: 30px;
     }
-    
+
     .ring-set {
       margin-bottom: 40px;
     }
-    
+
     .main-image img {
       width: 300px;
       height: auto;
@@ -30,14 +30,14 @@
       transition: opacity 0.3s ease-in-out;
       cursor: pointer;
     }
-    
+
     .thumbnail-container {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 10px;
     }
-    
+
     .thumbnail {
       width: 60px;
       height: auto;
@@ -47,62 +47,70 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease;
     }
-    
+
     .thumbnail:hover {
       transform: scale(1.1);
     }
+
+    /* Modal 基本樣式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      max-width: 600px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #ccc;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- 女戒 -->
   <div class="product-gallery">
     <h1>女戒</h1>
-    " + "".join([
-      f'<div class="ring-set">
-        <h2>女戒{i}</h2>
-        <div class="main-image">
-          <img id="main-photo-female{i}" src="images/female-ring{i} (1).png" alt="女戒{i}" onclick="openModal('main-photo-female{i}')">
-        </div>
-        <div class="thumbnail-container">
-          ' + "".join([f'<img class="thumbnail" src="images/female-ring{i} ({j}).png" onclick="changeImage('main-photo-female{i}', 'images/female-ring{i} ({j}).png')">' for j in range(1, 5)]) + "
-        </div>
-      </div>" for i in range(1, 13)]) + "
-  </div>
-
-  <div class="product-gallery">
-    <h1>男戒</h1>
-    " + "".join([
-      f'<div class="ring-set">
-        <h2>男戒{i}</h2>
-        <div class="main-image">
-          <img id="main-photo-male{i}" src="images/male-ring{i} (1).png" alt="男戒{i}" onclick="openModal('main-photo-male{i}')">
-        </div>
-        <div class="thumbnail-container">
-          ' + "".join([f'<img class="thumbnail" src="images/male-ring{i} ({j}).png" onclick="changeImage('main-photo-male{i}', 'images/male-ring{i} ({j}).png')">' for j in range(1, 5)]) + "
-        </div>
-      </div>" for i in range(1, 8)]) + "
-  </div>
-
-  <script>
-    function changeImage(targetId, newSrc) {
-      const mainPhoto = document.getElementById(targetId);
-      mainPhoto.style.opacity = "0";
-      setTimeout(() => {
-        mainPhoto.src = newSrc;
-        mainPhoto.style.opacity = "1";
-      }, 300);
-    }
-    
-    function openModal(targetId) {
-      const modal = document.getElementById("image-modal");
-      const modalImage = document.getElementById("modal-image");
-      const mainPhoto = document.getElementById(targetId);
-      modalImage.src = mainPhoto.src;
-      modal.style.display = "block";
-    }
-    
-    function closeModal() {
-      document.getElementById("image-modal").style.display = "none";
-    }
-  </script>
-</body>
-</html>
+    <!-- 用迴圈方式產生 12 顆女戒，每顆 4 張圖片 -->
+    <!-- 命名規則範例: female-ring1 (1).png ~ female-ring12 (4).png -->
+    <!-- 第 i 顆戒指, 圖片檔名: female-ring{i} (1).png, female-ring{i} (2).png, ... (4).png -->
+    <!-- i = 1..12, j = 1..4 -->
+    <!-- HTML 使用 Python 格式化產生 (以下僅示意, 實際需伺服器端或編譯後提供) -->
+    <!-- 若為靜態手動維護，可重複下列結構即可 -->
+    <!-- ↓↓↓↓↓ 以下開始動態插入資料(概念示意) ↓↓↓↓↓ -->
+    "+"".join([
+      f"<div class=\"ring-set\">\n        <h2>女戒{i}</h2>\n        <div class=\"main-image\">\n          <img id=\"main-photo-female{i}\" src=\"images/female-ring{i} (1).png\" alt=\"女戒{i}\" onclick=\"openModal('main-photo-female{i}')\">\n        </div>\n        <div class=\"thumbnail-container\">\n          " + "".join([f"<img class=\"thumbnail\" src=\"images/female-ring{i} ({j}).png\" onclick=\"changeImage('main-photo-female{i}', 'images/female-ring{i} ({j}).png')\">" for j in range(1,5)]) + "\n        </div>\n      </div>"
+      for i in range(1,13)
+    ])+
+    "<!-- ↑↑↑↑↑ 動態插入結束 ↑↑↑↑↑ -->\n  </div>\n\n  <!-- 男戒 -->\n  <div class=\"product-gallery\">\n    <h1>男戒</h1>\n    <!-- 這裡以同樣方式處理 7 顆男戒，每顆 4 張圖片 -->\n    <!-- 命名規則範例: male-ring1 (1).png ~ male-ring7 (4).png -->\n    <!-- i = 1..7, j = 1..4 -->\n    <!-- ↓↓↓↓↓ 以下開始動態插入資料(概念示意) ↓↓↓↓↓ -->\n    "+"".join([
+      f"<div class=\"ring-set\">\n        <h2>男戒{i}</h2>\n        <div class=\"main-image\">\n          <img id=\"main-photo-male{i}\" src=\"images/male-ring{i} (1).png\" alt=\"男戒{i}\" onclick=\"openModal('main-photo-male{i}')\">\n        </div>\n        <div class=\"thumbnail-container\">\n          " + "".join([f"<img class=\"thumbnail\" src=\"images/male-ring{i} ({j}).png\" onclick=\"changeImage('main-photo-male{i}', 'images/male-ring{i} ({j}).png')\">" for j in range(1,5)]) + "\n        </div>\n      </div>"
+      for i in range(1,8)
+    ])+
+    "<!-- ↑↑↑↑↑ 動態插入結束 ↑↑↑↑↑ -->\n  </div>\n\n  <!-- Modal -->\n  <div id=\"image-modal\" class=\"modal\" onclick=\"closeModal()\">\n    <div class=\"modal-content\">\n      <span class=\"close\">&times;</span>\n      <img id=\"modal-image\" src=\"\" alt=\"放大圖片\" />\n    </div>\n  </div>\n\n  <script>\n    function changeImage(targetId, newSrc) {\n      const mainPhoto = document.getElementById(targetId);\n      mainPhoto.style.opacity = '0';\n      setTimeout(() => {\n        mainPhoto.src = newSrc;\n        mainPhoto.style.opacity = '1';\n      }, 300);\n    }\n\n    function openModal(targetId) {\n      const modal = document.getElementById('image-modal');\n      const modalImage = document.getElementById('modal-image');\n      const mainPhoto = document.getElementById(targetId);\n      if (mainPhoto) {\n        modalImage.src = mainPhoto.src;\n        modal.style.display = 'block';\n      }\n    }\n\n    function closeModal() {\n      document.getElementById('image-modal').style.display = 'none';\n    }\n  </script>\n\n</body>\n</html>
