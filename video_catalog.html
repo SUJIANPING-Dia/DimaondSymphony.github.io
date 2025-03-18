@@ -18,6 +18,10 @@
       margin-top: 30px;
     }
     
+    .ring-set {
+      margin-bottom: 40px;
+    }
+    
     .main-image img {
       width: 300px;
       height: auto;
@@ -54,6 +58,7 @@
     <h1>女戒</h1>
     " + "".join([
       f'<div class="ring-set">
+        <h2>女戒{i}</h2>
         <div class="main-image">
           <img id="main-photo-female{i}" src="images/female-ring{i} (1).png" alt="女戒{i}" onclick="openModal('main-photo-female{i}')">
         </div>
@@ -67,6 +72,7 @@
     <h1>男戒</h1>
     " + "".join([
       f'<div class="ring-set">
+        <h2>男戒{i}</h2>
         <div class="main-image">
           <img id="main-photo-male{i}" src="images/male-ring{i} (1).png" alt="男戒{i}" onclick="openModal('main-photo-male{i}')">
         </div>
