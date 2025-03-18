@@ -50,18 +50,25 @@
       display: block;
     }
 
-    /* product-gallery 區塊 */
+    /* 將每個 ring-set 以網格方式排版，一列 3 個 */
     .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      justify-items: center;
       margin-top: 30px;
+      padding: 0 20px;
     }
 
     .ring-set {
-      margin-bottom: 40px;
+      width: 100%;
+      max-width: 350px;
+      margin-bottom: 20px;
     }
 
     /* 主圖樣式 */
     .main-image img {
-      width: 300px;
+      width: 100%;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -180,9 +187,35 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // === 產生 女戒 ===
-    // 共有 12 顆 (i = 1..12)，每顆 4 張圖片 (j = 1..4)
-    // 命名: female-ring(i)(j).png
+    // 切換主圖
+    function changeImage(targetId, newSrc) {
+      const mainPhoto = document.getElementById(targetId);
+      if (mainPhoto) {
+        mainPhoto.style.opacity = '0';
+        setTimeout(() => {
+          mainPhoto.src = newSrc;
+          mainPhoto.style.opacity = '1';
+        }, 300);
+      }
+    }
+
+    // 開啟 Modal
+    function openModal(targetId) {
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const mainPhoto = document.getElementById(targetId);
+      if (mainPhoto) {
+        modalImage.src = mainPhoto.src;
+        modal.style.display = 'block';
+      }
+    }
+
+    // 關閉 Modal
+    function closeModal() {
+      document.getElementById('image-modal').style.display = 'none';
+    }
+
+    // === 產生 女戒 (12顆，每顆4張) ===
     const femaleGallery = document.getElementById('female-gallery');
     for (let i = 1; i <= 12; i++) {
       const ringSet = document.createElement('div');
@@ -193,21 +226,20 @@
       title.textContent = `女戒${i}`;
       ringSet.appendChild(title);
 
-      // 主圖區
+      // 主圖
       const mainImageDiv = document.createElement('div');
       mainImageDiv.className = 'main-image';
       const mainImg = document.createElement('img');
       mainImg.id = `main-photo-female${i}`;
       mainImg.src = `images/female-ring(${i})(1).png`;
       mainImg.alt = `女戒${i}`;
-      // 點擊時開 Modal
       mainImg.addEventListener('click', () => {
         openModal(`main-photo-female${i}`);
       });
       mainImageDiv.appendChild(mainImg);
       ringSet.appendChild(mainImageDiv);
 
-      // 縮圖區
+      // 縮圖
       const thumbnailDiv = document.createElement('div');
       thumbnailDiv.className = 'thumbnail-container';
       for (let j = 1; j <= 4; j++) {
@@ -222,13 +254,10 @@
       }
       ringSet.appendChild(thumbnailDiv);
 
-      // 加入父容器
       femaleGallery.appendChild(ringSet);
     }
 
-    // === 產生 男戒 ===
-    // 共有 7 顆 (i = 1..7)，每顆 4 張圖片 (j = 1..4)
-    // 命名: male-ring(i)(j).png
+    // === 產生 男戒 (7顆，每顆4張) ===
     const maleGallery = document.getElementById('male-gallery');
     for (let i = 1; i <= 7; i++) {
       const ringSet = document.createElement('div');
@@ -270,9 +299,7 @@
       maleGallery.appendChild(ringSet);
     }
 
-    // === 產生 項鍊 ===
-    // 共有 3 款 (i = 1..3)，每款 4 張圖片 (j = 1..4)
-    // 命名: necklace(i)(j).png
+    // === 產生 項鍊 (3款，每款3張) ===
     const necklaceGallery = document.getElementById('necklace-gallery');
     for (let i = 1; i <= 3; i++) {
       const ringSet = document.createElement('div');
@@ -296,10 +323,10 @@
       mainImageDiv.appendChild(mainImg);
       ringSet.appendChild(mainImageDiv);
 
-      // 縮圖
+      // 縮圖 (只有3張 j=1..3)
       const thumbnailDiv = document.createElement('div');
       thumbnailDiv.className = 'thumbnail-container';
-      for (let j = 1; j <= 4; j++) {
+      for (let j = 1; j <= 3; j++) {
         const thumbImg = document.createElement('img');
         thumbImg.className = 'thumbnail';
         thumbImg.src = `images/necklace(${i})(${j}).png`;
@@ -314,39 +341,8 @@
       necklaceGallery.appendChild(ringSet);
     }
 
-    // === 函式區 ===
-
-    // 切換主圖
-    function changeImage(targetId, newSrc) {
-      const mainPhoto = document.getElementById(targetId);
-      if (mainPhoto) {
-        mainPhoto.style.opacity = '0';
-        setTimeout(() => {
-          mainPhoto.src = newSrc;
-          mainPhoto.style.opacity = '1';
-        }, 300);
-      }
-    }
-
-    // 顯示 Modal
-    function openModal(targetId) {
-      const modal = document.getElementById('image-modal');
-      const modalImage = document.getElementById('modal-image');
-      const mainPhoto = document.getElementById(targetId);
-      if (mainPhoto) {
-        modalImage.src = mainPhoto.src;
-        modal.style.display = 'block';
-      }
-    }
-
-    // 關閉 Modal
-    function closeModal() {
-      document.getElementById('image-modal').style.display = 'none';
-    }
-
-    // 預設顯示女戒頁籤
+    // 預設顯示女戒
     showTab('femaleTab');
   </script>
-
 </body>
 </html>
