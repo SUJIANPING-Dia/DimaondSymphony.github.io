@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>鑽之韻 DIAMOND SYMPHONY 官方連結</title>
+  <title><a href="index.html">鑽之韻 DIAMOND SYMPHONY 官方連結</a></title>
   <style>
     /* =============== 來自引用程式碼的全局與header/footer樣式 =============== */
     body {
@@ -27,11 +27,19 @@
       color: #f4c150;
     }
 
+    /* 讓主標題可點擊回首頁 */
     header h1 {
       font-size: 2.5rem;
       margin: 0;
       font-weight: bold;
       letter-spacing: 1px;
+    }
+    header h1 a {
+      color: #f4c150;
+      text-decoration: none;
+    }
+    header h1 a:hover {
+      text-decoration: underline;
     }
 
     header p {
@@ -201,16 +209,36 @@
       color: #fff;
     }
 
-    /* 讓 main 保持一些間距 */
     main {
       padding-bottom: 40px;
+    }
+
+    /* "返回首頁"按鈕樣式 */
+    .back-home {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #121212;
+      background-color: #f4c150;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      text-decoration: none;
+    }
+    .back-home:hover {
+      background-color: #d4a731;
+      transform: translateY(-3px);
     }
   </style>
 </head>
 <body>
-  <!-- ========== 頁首 (來自參考程式碼) ========== -->
+
+  <!-- ========== 頁首 (header) ========== -->
   <header>
-    <h1>鑽之韻<br>DIAMOND SYMPHONY</h1>
+    <!-- 將 h1 包成可點擊 -->
+    <h1><a href="index.html">鑽之韻<br>DIAMOND SYMPHONY</a></h1>
     <p>
       鑽之韻致力於以創新工藝與嚴謹品質，打造出優雅、獨特的鑽石精品。<br>
       我們的品牌融合藝術與匠心，為您呈現珍貴的光芒與永恆的美麗。
@@ -253,13 +281,16 @@
 
   </main>
 
-  <!-- ========== 網頁最後的結尾資訊 (來自參考程式碼) ========== -->
+  <!-- ========== 網頁最後的結尾資訊 (footer) ========== -->
   <footer>
     <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
     <p>聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
     <p>電話：0979 517 176</p>
     <p>地址：台北市民生東路二段143號8樓</p>
     <p>&copy; 2024 鑽之韻 DIAMOND SYMPHONY. All Rights Reserved.</p>
+
+    <!-- 新增 "返回首頁" 按鈕 -->
+    <a href="index.html" class="back-home">返回首頁</a>
   </footer>
 
   <!-- ========== JavaScript 功能區 ========== -->
