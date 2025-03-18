@@ -52,32 +52,50 @@
 <body>
   <div class="product-gallery">
     <h1>女戒</h1>
-    <div class="main-image">
-      <img id="main-photo" src="images/female-ring1 (1).png" alt="女戒1" onclick="openModal()">
-    </div>
-    <div class="thumbnail-container">
-      " + "".join([f'<img class="thumbnail" src="images/female-ring{i} ({j}).png" onclick="changeImage('images/female-ring{i} ({j}).png')">' for i in range(1, 13) for j in range(1, 5)]) + "
-    </div>
+    " + "".join([
+      f'<div class="ring-set">
+        <div class="main-image">
+          <img id="main-photo-female{i}" src="images/female-ring{i} (1).png" alt="女戒{i}" onclick="openModal('main-photo-female{i}')">
+        </div>
+        <div class="thumbnail-container">
+          ' + "".join([f'<img class="thumbnail" src="images/female-ring{i} ({j}).png" onclick="changeImage('main-photo-female{i}', 'images/female-ring{i} ({j}).png')">' for j in range(1, 5)]) + "
+        </div>
+      </div>" for i in range(1, 13)]) + "
   </div>
 
   <div class="product-gallery">
     <h1>男戒</h1>
-    <div class="main-image">
-      <img id="main-photo-male" src="images/male-ring1 (1).png" alt="男戒1" onclick="openModal()">
-    </div>
-    <div class="thumbnail-container">
-      " + "".join([f'<img class="thumbnail" src="images/male-ring{i} ({j}).png" onclick="changeImage('images/male-ring{i} ({j}).png')">' for i in range(1, 8) for j in range(1, 5)]) + "
-    </div>
+    " + "".join([
+      f'<div class="ring-set">
+        <div class="main-image">
+          <img id="main-photo-male{i}" src="images/male-ring{i} (1).png" alt="男戒{i}" onclick="openModal('main-photo-male{i}')">
+        </div>
+        <div class="thumbnail-container">
+          ' + "".join([f'<img class="thumbnail" src="images/male-ring{i} ({j}).png" onclick="changeImage('main-photo-male{i}', 'images/male-ring{i} ({j}).png')">' for j in range(1, 5)]) + "
+        </div>
+      </div>" for i in range(1, 8)]) + "
   </div>
 
   <script>
-    function changeImage(newSrc) {
-      const mainPhoto = document.getElementById("main-photo");
+    function changeImage(targetId, newSrc) {
+      const mainPhoto = document.getElementById(targetId);
       mainPhoto.style.opacity = "0";
       setTimeout(() => {
         mainPhoto.src = newSrc;
         mainPhoto.style.opacity = "1";
       }, 300);
+    }
+    
+    function openModal(targetId) {
+      const modal = document.getElementById("image-modal");
+      const modalImage = document.getElementById("modal-image");
+      const mainPhoto = document.getElementById(targetId);
+      modalImage.src = mainPhoto.src;
+      modal.style.display = "block";
+    }
+    
+    function closeModal() {
+      document.getElementById("image-modal").style.display = "none";
     }
   </script>
 </body>
