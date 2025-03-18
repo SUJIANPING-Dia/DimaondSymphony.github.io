@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>產品目錄 - 鑽之韻 DIAMOND SYMPHONY</title>
   <style>
-    /* === 基本樣式設定 === */
+    /* 基本樣式 */
     body {
       margin: 0;
       padding: 0;
@@ -15,10 +15,42 @@
       text-align: center;
     }
 
-    h1 {
+    /* 分頁籤 (Tabs) 樣式 */
+    .tabs {
+      display: flex;
+      justify-content: center;
       margin-top: 20px;
+      gap: 10px;
     }
 
+    .tab-button {
+      background-color: #2b2b2b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #f4c150;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .tab-button:hover {
+      background-color: #f4c150;
+      color: #121212;
+      transform: translateY(-3px);
+    }
+
+    /* 隱藏 / 顯示頁籤內容區 */
+    .tab-content {
+      display: none;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* product-gallery 區塊 */
     .product-gallery {
       margin-top: 30px;
     }
@@ -27,7 +59,7 @@
       margin-bottom: 40px;
     }
 
-    /* === 主圖樣式 === */
+    /* 主圖樣式 */
     .main-image img {
       width: 300px;
       height: auto;
@@ -37,7 +69,7 @@
       cursor: pointer;
     }
 
-    /* === 縮圖區塊 === */
+    /* 縮圖區塊 */
     .thumbnail-container {
       display: flex;
       justify-content: center;
@@ -59,7 +91,7 @@
       transform: scale(1.1);
     }
 
-    /* === Modal 基本樣式 === */
+    /* Modal 基本樣式 */
     .modal {
       display: none;
       position: fixed;
@@ -101,130 +133,190 @@
 </head>
 <body>
 
-  <!-- 容器：女戒 -->
-  <div class="product-gallery">
-    <h1>女戒</h1>
-    <div id="female-gallery"></div>
+  <!-- 分頁籤 (Tabs) -->
+  <div class="tabs">
+    <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
+    <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
+    <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
   </div>
 
-  <!-- 容器：男戒 -->
-  <div class="product-gallery">
-    <h1>男戒</h1>
-    <div id="male-gallery"></div>
+  <!-- 女戒頁籤內容 -->
+  <div id="femaleTab" class="tab-content">
+    <div class="product-gallery" id="female-gallery"></div>
+  </div>
+
+  <!-- 男戒頁籤內容 -->
+  <div id="maleTab" class="tab-content">
+    <div class="product-gallery" id="male-gallery"></div>
+  </div>
+
+  <!-- 項鍊頁籤內容 -->
+  <div id="necklaceTab" class="tab-content">
+    <div class="product-gallery" id="necklace-gallery"></div>
   </div>
 
   <!-- Modal 彈窗 -->
   <div id="image-modal" class="modal" onclick="closeModal()">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <img id="modal-image" src="" alt="放大圖片">
+      <img id="modal-image" src="" alt="放大圖片" />
     </div>
   </div>
 
   <script>
-    // =========== 產生女戒 ===========
-    // 女戒：共有 12 顆女戒 (i = 1..12)，
-    // 每顆 4 張圖 (j = 1..4)，命名規則：female-ring(i)(j).png
-    const femaleGallery = document.getElementById("female-gallery");
-    for (let i = 1; i <= 12; i++) {
-      // 建立父容器 ring-set
-      const ringSet = document.createElement("div");
-      ringSet.className = "ring-set";
+    // 頁籤切換功能
+    function showTab(tabId) {
+      // 先將所有 tab-content 隱藏
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach((tab) => {
+        tab.classList.remove('active');
+      });
+      // 只顯示目標 tab
+      const target = document.getElementById(tabId);
+      if (target) {
+        target.classList.add('active');
+      }
+      // 自動捲動到頁面頂部（可選）
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-      // 建立標題 <h2>女戒{i}</h2>
-      const title = document.createElement("h2");
+    // === 產生 女戒 ===
+    // 共有 12 顆 (i = 1..12)，每顆 4 張圖片 (j = 1..4)
+    // 命名: female-ring(i)(j).png
+    const femaleGallery = document.getElementById('female-gallery');
+    for (let i = 1; i <= 12; i++) {
+      const ringSet = document.createElement('div');
+      ringSet.className = 'ring-set';
+
+      // 標題
+      const title = document.createElement('h2');
       title.textContent = `女戒${i}`;
       ringSet.appendChild(title);
 
-      // 建立主圖容器 .main-image
-      const mainImageDiv = document.createElement("div");
-      mainImageDiv.className = "main-image";
-      // 建立主圖 <img>，預設顯示 (j=1)
-      const mainImg = document.createElement("img");
+      // 主圖區
+      const mainImageDiv = document.createElement('div');
+      mainImageDiv.className = 'main-image';
+      const mainImg = document.createElement('img');
       mainImg.id = `main-photo-female${i}`;
       mainImg.src = `images/female-ring(${i})(1).png`;
       mainImg.alt = `女戒${i}`;
-      // 點擊時開啟 Modal
-      mainImg.addEventListener("click", () => {
+      // 點擊時開 Modal
+      mainImg.addEventListener('click', () => {
         openModal(`main-photo-female${i}`);
       });
       mainImageDiv.appendChild(mainImg);
       ringSet.appendChild(mainImageDiv);
 
-      // 建立縮圖容器 .thumbnail-container
-      const thumbnailDiv = document.createElement("div");
-      thumbnailDiv.className = "thumbnail-container";
-      // 產生 4 張縮圖
+      // 縮圖區
+      const thumbnailDiv = document.createElement('div');
+      thumbnailDiv.className = 'thumbnail-container';
       for (let j = 1; j <= 4; j++) {
-        const thumbImg = document.createElement("img");
-        thumbImg.className = "thumbnail";
+        const thumbImg = document.createElement('img');
+        thumbImg.className = 'thumbnail';
         thumbImg.src = `images/female-ring(${i})(${j}).png`;
-        thumbImg.alt = `女戒${i} - 圖片${j}`;
-        thumbImg.addEventListener("click", () => {
+        thumbImg.alt = `女戒${i} - 圖${j}`;
+        thumbImg.addEventListener('click', () => {
           changeImage(`main-photo-female${i}`, `images/female-ring(${i})(${j}).png`);
         });
         thumbnailDiv.appendChild(thumbImg);
       }
       ringSet.appendChild(thumbnailDiv);
 
-      // 將整個 ringSet 加入 femaleGallery
+      // 加入父容器
       femaleGallery.appendChild(ringSet);
     }
 
-    // =========== 產生男戒 ===========
-    // 男戒：共有 7 顆男戒 (i = 1..7)，
-    // 每顆 4 張圖 (j = 1..4)，命名規則：male-ring(i)(j).png
-    const maleGallery = document.getElementById("male-gallery");
+    // === 產生 男戒 ===
+    // 共有 7 顆 (i = 1..7)，每顆 4 張圖片 (j = 1..4)
+    // 命名: male-ring(i)(j).png
+    const maleGallery = document.getElementById('male-gallery');
     for (let i = 1; i <= 7; i++) {
-      // 建立父容器 ring-set
-      const ringSet = document.createElement("div");
-      ringSet.className = "ring-set";
+      const ringSet = document.createElement('div');
+      ringSet.className = 'ring-set';
 
-      // 建立標題 <h2>男戒{i}</h2>
-      const title = document.createElement("h2");
+      // 標題
+      const title = document.createElement('h2');
       title.textContent = `男戒${i}`;
       ringSet.appendChild(title);
 
-      // 建立主圖容器 .main-image
-      const mainImageDiv = document.createElement("div");
-      mainImageDiv.className = "main-image";
-      // 建立主圖 <img>，預設顯示 (j=1)
-      const mainImg = document.createElement("img");
+      // 主圖
+      const mainImageDiv = document.createElement('div');
+      mainImageDiv.className = 'main-image';
+      const mainImg = document.createElement('img');
       mainImg.id = `main-photo-male${i}`;
       mainImg.src = `images/male-ring(${i})(1).png`;
       mainImg.alt = `男戒${i}`;
-      // 點擊時開啟 Modal
-      mainImg.addEventListener("click", () => {
+      mainImg.addEventListener('click', () => {
         openModal(`main-photo-male${i}`);
       });
       mainImageDiv.appendChild(mainImg);
       ringSet.appendChild(mainImageDiv);
 
-      // 建立縮圖容器 .thumbnail-container
-      const thumbnailDiv = document.createElement("div");
-      thumbnailDiv.className = "thumbnail-container";
-      // 產生 4 張縮圖
+      // 縮圖
+      const thumbnailDiv = document.createElement('div');
+      thumbnailDiv.className = 'thumbnail-container';
       for (let j = 1; j <= 4; j++) {
-        const thumbImg = document.createElement("img");
-        thumbImg.className = "thumbnail";
+        const thumbImg = document.createElement('img');
+        thumbImg.className = 'thumbnail';
         thumbImg.src = `images/male-ring(${i})(${j}).png`;
-        thumbImg.alt = `男戒${i} - 圖片${j}`;
-        thumbImg.addEventListener("click", () => {
+        thumbImg.alt = `男戒${i} - 圖${j}`;
+        thumbImg.addEventListener('click', () => {
           changeImage(`main-photo-male${i}`, `images/male-ring(${i})(${j}).png`);
         });
         thumbnailDiv.appendChild(thumbImg);
       }
       ringSet.appendChild(thumbnailDiv);
 
-      // 將整個 ringSet 加入 maleGallery
       maleGallery.appendChild(ringSet);
     }
 
-    /**
-     * 切換主圖
-     * @param {string} targetId - 主圖 <img> 的 ID
-     * @param {string} newSrc   - 要切換成的圖片路徑
-     */
+    // === 產生 項鍊 ===
+    // 共有 3 款 (i = 1..3)，每款 4 張圖片 (j = 1..4)
+    // 命名: necklace(i)(j).png
+    const necklaceGallery = document.getElementById('necklace-gallery');
+    for (let i = 1; i <= 3; i++) {
+      const ringSet = document.createElement('div');
+      ringSet.className = 'ring-set';
+
+      // 標題
+      const title = document.createElement('h2');
+      title.textContent = `項鍊${i}`;
+      ringSet.appendChild(title);
+
+      // 主圖
+      const mainImageDiv = document.createElement('div');
+      mainImageDiv.className = 'main-image';
+      const mainImg = document.createElement('img');
+      mainImg.id = `main-photo-necklace${i}`;
+      mainImg.src = `images/necklace(${i})(1).png`;
+      mainImg.alt = `項鍊${i}`;
+      mainImg.addEventListener('click', () => {
+        openModal(`main-photo-necklace${i}`);
+      });
+      mainImageDiv.appendChild(mainImg);
+      ringSet.appendChild(mainImageDiv);
+
+      // 縮圖
+      const thumbnailDiv = document.createElement('div');
+      thumbnailDiv.className = 'thumbnail-container';
+      for (let j = 1; j <= 4; j++) {
+        const thumbImg = document.createElement('img');
+        thumbImg.className = 'thumbnail';
+        thumbImg.src = `images/necklace(${i})(${j}).png`;
+        thumbImg.alt = `項鍊${i} - 圖${j}`;
+        thumbImg.addEventListener('click', () => {
+          changeImage(`main-photo-necklace${i}`, `images/necklace(${i})(${j}).png`);
+        });
+        thumbnailDiv.appendChild(thumbImg);
+      }
+      ringSet.appendChild(thumbnailDiv);
+
+      necklaceGallery.appendChild(ringSet);
+    }
+
+    // === 函式區 ===
+
+    // 切換主圖
     function changeImage(targetId, newSrc) {
       const mainPhoto = document.getElementById(targetId);
       if (mainPhoto) {
@@ -236,10 +328,7 @@
       }
     }
 
-    /**
-     * 開啟 Modal
-     * @param {string} targetId - 主圖 <img> 的 ID
-     */
+    // 顯示 Modal
     function openModal(targetId) {
       const modal = document.getElementById('image-modal');
       const modalImage = document.getElementById('modal-image');
@@ -250,10 +339,13 @@
       }
     }
 
-    /** 關閉 Modal */
+    // 關閉 Modal
     function closeModal() {
       document.getElementById('image-modal').style.display = 'none';
     }
+
+    // 預設顯示女戒頁籤
+    showTab('femaleTab');
   </script>
 
 </body>
