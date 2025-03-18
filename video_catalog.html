@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>產品目錄 - 鑽之韻 DIAMOND SYMPHONY</title>
   <style>
+    /* === 基本樣式設定 === */
     body {
       margin: 0;
       padding: 0;
@@ -12,6 +13,10 @@
       font-family: "Helvetica Neue", Arial, sans-serif;
       color: #e0e0e0;
       text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
     }
 
     .product-gallery {
@@ -22,6 +27,7 @@
       margin-bottom: 40px;
     }
 
+    /* === 主圖樣式 === */
     .main-image img {
       width: 300px;
       height: auto;
@@ -31,6 +37,7 @@
       cursor: pointer;
     }
 
+    /* === 縮圖區塊 === */
     .thumbnail-container {
       display: flex;
       justify-content: center;
@@ -52,7 +59,7 @@
       transform: scale(1.1);
     }
 
-    /* Modal 基本樣式 */
+    /* === Modal 基本樣式 === */
     .modal {
       display: none;
       position: fixed;
@@ -90,27 +97,164 @@
     .close:hover {
       color: #fff;
     }
-
   </style>
 </head>
 <body>
 
-  <!-- 女戒 -->
+  <!-- 容器：女戒 -->
   <div class="product-gallery">
     <h1>女戒</h1>
-    <!-- 用迴圈方式產生 12 顆女戒，每顆 4 張圖片，
-         命名規則: female-ring({i})({j}).png
-         i=1..12, j=1..4
-         第1張 (j=1) 做為主圖，其餘 (2~4) 做為縮圖 -->
+    <div id="female-gallery"></div>
+  </div>
 
-    <!-- ↓↓↓↓↓ 以下示範用 Python 迴圈生成 (概念示意) ↓↓↓↓↓ -->
-    <!-- 手動維護時，可以重複此結構 12 次即可 -->
-    "+"".join([
-      f"<div class=\"ring-set\">\n        <h2>女戒{i}</h2>\n        <div class=\"main-image\">\n          <img id=\"main-photo-female{i}\" src=\"images/female-ring({i})({1}).png\" alt=\"女戒{i}\" onclick=\"openModal('main-photo-female{i}')\">\n        </div>\n        <div class=\"thumbnail-container\">\n          " + "".join([f"<img class=\"thumbnail\" src=\"images/female-ring({i})({j}).png\" onclick=\"changeImage('main-photo-female{i}', 'images/female-ring({i})({j}).png')\">" for j in range(1,5)]) + "\n        </div>\n      </div>"
-      for i in range(1,13)
-    ])+
-  "<!-- ↑↑↑↑↑ 女戒區塊結束 ↑↑↑↑↑ -->\n  </div>\n\n  <!-- 男戒 -->\n  <div class=\"product-gallery\">\n    <h1>男戒</h1>\n    <!-- 用迴圈方式產生 7 顆男戒，每顆 4 張圖片，\n         命名規則: male-ring({i})({j}).png\n         i=1..7, j=1..4\n         第1張 (j=1) 做為主圖，其餘 (2~4) 做為縮圖 -->\n\n    <!-- ↓↓↓↓↓ 以下示範用 Python 迴圈生成 (概念示意) ↓↓↓↓↓ -->\n    <!-- 手動維護時，可以重複此結構 7 次即可 -->\n    "+"".join([
-      f"<div class=\"ring-set\">\n        <h2>男戒{i}</h2>\n        <div class=\"main-image\">\n          <img id=\"main-photo-male{i}\" src=\"images/male-ring({i})({1}).png\" alt=\"男戒{i}\" onclick=\"openModal('main-photo-male{i}')\">\n        </div>\n        <div class=\"thumbnail-container\">\n          " + "".join([f"<img class=\"thumbnail\" src=\"images/male-ring({i})({j}).png\" onclick=\"changeImage('main-photo-male{i}', 'images/male-ring({i})({j}).png')\">" for j in range(1,5)]) + "\n        </div>\n      </div>"
-      for i in range(1,8)
-    ])+
-    "<!-- ↑↑↑↑↑ 男戒區塊結束 ↑↑↑↑↑ -->\n  </div>\n\n  <!-- Modal -->\n  <div id=\"image-modal\" class=\"modal\" onclick=\"closeModal()\">\n    <div class=\"modal-content\">\n      <span class=\"close\">&times;</span>\n      <img id=\"modal-image\" src=\"\" alt=\"放大圖片\" />\n    </div>\n  </div>\n\n  <script>\n    function changeImage(targetId, newSrc) {\n      const mainPhoto = document.getElementById(targetId);\n      if (mainPhoto) {\n        mainPhoto.style.opacity = '0';\n        setTimeout(() => {\n          mainPhoto.src = newSrc;\n          mainPhoto.style.opacity = '1';\n        }, 300);\n      }\n    }\n\n    function openModal(targetId) {\n      const modal = document.getElementById('image-modal');\n      const modalImage = document.getElementById('modal-image');\n      const mainPhoto = document.getElementById(targetId);\n      if (mainPhoto) {\n        modalImage.src = mainPhoto.src;\n        modal.style.display = 'block';\n      }\n    }\n\n    function closeModal() {\n      document.getElementById('image-modal').style.display = 'none';\n    }\n  </script>\n\n</body>\n</html>
+  <!-- 容器：男戒 -->
+  <div class="product-gallery">
+    <h1>男戒</h1>
+    <div id="male-gallery"></div>
+  </div>
+
+  <!-- Modal 彈窗 -->
+  <div id="image-modal" class="modal" onclick="closeModal()">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modal-image" src="" alt="放大圖片">
+    </div>
+  </div>
+
+  <script>
+    // =========== 產生女戒 ===========
+    // 女戒：共有 12 顆女戒 (i = 1..12)，
+    // 每顆 4 張圖 (j = 1..4)，命名規則：female-ring(i)(j).png
+    const femaleGallery = document.getElementById("female-gallery");
+    for (let i = 1; i <= 12; i++) {
+      // 建立父容器 ring-set
+      const ringSet = document.createElement("div");
+      ringSet.className = "ring-set";
+
+      // 建立標題 <h2>女戒{i}</h2>
+      const title = document.createElement("h2");
+      title.textContent = `女戒${i}`;
+      ringSet.appendChild(title);
+
+      // 建立主圖容器 .main-image
+      const mainImageDiv = document.createElement("div");
+      mainImageDiv.className = "main-image";
+      // 建立主圖 <img>，預設顯示 (j=1)
+      const mainImg = document.createElement("img");
+      mainImg.id = `main-photo-female${i}`;
+      mainImg.src = `images/female-ring(${i})(1).png`;
+      mainImg.alt = `女戒${i}`;
+      // 點擊時開啟 Modal
+      mainImg.addEventListener("click", () => {
+        openModal(`main-photo-female${i}`);
+      });
+      mainImageDiv.appendChild(mainImg);
+      ringSet.appendChild(mainImageDiv);
+
+      // 建立縮圖容器 .thumbnail-container
+      const thumbnailDiv = document.createElement("div");
+      thumbnailDiv.className = "thumbnail-container";
+      // 產生 4 張縮圖
+      for (let j = 1; j <= 4; j++) {
+        const thumbImg = document.createElement("img");
+        thumbImg.className = "thumbnail";
+        thumbImg.src = `images/female-ring(${i})(${j}).png`;
+        thumbImg.alt = `女戒${i} - 圖片${j}`;
+        thumbImg.addEventListener("click", () => {
+          changeImage(`main-photo-female${i}`, `images/female-ring(${i})(${j}).png`);
+        });
+        thumbnailDiv.appendChild(thumbImg);
+      }
+      ringSet.appendChild(thumbnailDiv);
+
+      // 將整個 ringSet 加入 femaleGallery
+      femaleGallery.appendChild(ringSet);
+    }
+
+    // =========== 產生男戒 ===========
+    // 男戒：共有 7 顆男戒 (i = 1..7)，
+    // 每顆 4 張圖 (j = 1..4)，命名規則：male-ring(i)(j).png
+    const maleGallery = document.getElementById("male-gallery");
+    for (let i = 1; i <= 7; i++) {
+      // 建立父容器 ring-set
+      const ringSet = document.createElement("div");
+      ringSet.className = "ring-set";
+
+      // 建立標題 <h2>男戒{i}</h2>
+      const title = document.createElement("h2");
+      title.textContent = `男戒${i}`;
+      ringSet.appendChild(title);
+
+      // 建立主圖容器 .main-image
+      const mainImageDiv = document.createElement("div");
+      mainImageDiv.className = "main-image";
+      // 建立主圖 <img>，預設顯示 (j=1)
+      const mainImg = document.createElement("img");
+      mainImg.id = `main-photo-male${i}`;
+      mainImg.src = `images/male-ring(${i})(1).png`;
+      mainImg.alt = `男戒${i}`;
+      // 點擊時開啟 Modal
+      mainImg.addEventListener("click", () => {
+        openModal(`main-photo-male${i}`);
+      });
+      mainImageDiv.appendChild(mainImg);
+      ringSet.appendChild(mainImageDiv);
+
+      // 建立縮圖容器 .thumbnail-container
+      const thumbnailDiv = document.createElement("div");
+      thumbnailDiv.className = "thumbnail-container";
+      // 產生 4 張縮圖
+      for (let j = 1; j <= 4; j++) {
+        const thumbImg = document.createElement("img");
+        thumbImg.className = "thumbnail";
+        thumbImg.src = `images/male-ring(${i})(${j}).png`;
+        thumbImg.alt = `男戒${i} - 圖片${j}`;
+        thumbImg.addEventListener("click", () => {
+          changeImage(`main-photo-male${i}`, `images/male-ring(${i})(${j}).png`);
+        });
+        thumbnailDiv.appendChild(thumbImg);
+      }
+      ringSet.appendChild(thumbnailDiv);
+
+      // 將整個 ringSet 加入 maleGallery
+      maleGallery.appendChild(ringSet);
+    }
+
+    /**
+     * 切換主圖
+     * @param {string} targetId - 主圖 <img> 的 ID
+     * @param {string} newSrc   - 要切換成的圖片路徑
+     */
+    function changeImage(targetId, newSrc) {
+      const mainPhoto = document.getElementById(targetId);
+      if (mainPhoto) {
+        mainPhoto.style.opacity = '0';
+        setTimeout(() => {
+          mainPhoto.src = newSrc;
+          mainPhoto.style.opacity = '1';
+        }, 300);
+      }
+    }
+
+    /**
+     * 開啟 Modal
+     * @param {string} targetId - 主圖 <img> 的 ID
+     */
+    function openModal(targetId) {
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const mainPhoto = document.getElementById(targetId);
+      if (mainPhoto) {
+        modalImage.src = mainPhoto.src;
+        modal.style.display = 'block';
+      }
+    }
+
+    /** 關閉 Modal */
+    function closeModal() {
+      document.getElementById('image-modal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
