@@ -3,100 +3,473 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 正確的標題寫法 -->
   <title>鑽之韻 DIAMOND SYMPHONY 官方連結</title>
 
   <style>
-    body { font-family: "Helvetica Neue", Arial, sans-serif; margin: 0; padding: 0; background-color: #121212; color: #e0e0e0; text-align: center; }
-    a { text-decoration: none; color: inherit; }
-    header, footer { background: #1f1f1f; padding: 20px; }
-    header h1 { font-size: 2.5rem; color: #f4c150; }
-    .consultation-button, .back-home { background-color: #f4c150; color: #121212; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 20px; }
-    .tabs { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-    .tab-button { background-color: #2b2b2b; color: #f4c150; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-    .tab-button:hover { background-color: #f4c150; color: #121212; }
-    .tab-content { display: none; max-width: 1200px; margin: auto; }
-    .active { display: block; }
-    .product-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; padding: 20px; }
-    .ring-set img { width: 100%; border-radius: 10px; cursor: pointer; }
-    .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
-    .modal-content { margin: 5% auto; max-width: 600px; background-color: #1e1e1e; border-radius: 10px; padding: 20px; }
-    .close { position: absolute; top: 10px; right: 15px; color: #ccc; font-size: 1.5rem; cursor: pointer; }
+    /* =============== 全局 & Header/Footer 樣式 =============== */
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #e0e0e0;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
+      padding: 40px 20px;
+      text-align: center;
+      color: #f4c150;
+    }
+
+    /* 讓主標題可點擊回首頁 */
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    header h1 a {
+      color: #f4c150;
+      text-decoration: none;
+    }
+    header h1 a:hover {
+      text-decoration: underline;
+    }
+
+    header p {
+      font-size: 1rem;
+      margin-top: 15px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 15px auto 0;
+      color: #bdbdbd;
+    }
+
+    .consultation-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #121212;
+      background-color: #f4c150;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .consultation-button:hover {
+      background-color: #d4a731;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #bdbdbd;
+    }
+
+    footer a {
+      color: #f4c150;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* =============== 目錄網站的 Tabs + Gallery 相關樣式 =============== */
+
+    /* 分頁籤 (Tabs) 樣式 */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .tab-button {
+      background-color: #2b2b2b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #f4c150;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .tab-button:hover {
+      background-color: #f4c150;
+      color: #121212;
+      transform: translateY(-3px);
+    }
+
+    /* 隱藏 / 顯示頁籤內容區 */
+    .tab-content {
+      display: none;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* 將每個 ring-set 以網格方式排版，一列 3 個 */
+    .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      margin-top: 30px;
+      padding: 0 20px;
+    }
+
+    .ring-set {
+      width: 100%;
+      max-width: 350px;
+      margin-bottom: 20px;
+    }
+
+    /* 主圖樣式 */
+    .main-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    /* 縮圖區塊 */
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .thumbnail {
+      width: 60px;
+      height: auto;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.1);
+    }
+
+    /* Modal 基本樣式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      max-width: 600px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #ccc;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    /* "返回首頁"按鈕樣式 */
+    .back-home {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #121212;
+      background-color: #f4c150;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      text-decoration: none;
+    }
+    .back-home:hover {
+      background-color: #d4a731;
+      transform: translateY(-3px);
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1><a href="index.html">鑽之韻 DIAMOND SYMPHONY</a></h1>
-  <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
-</header>
+  <!-- ========== 頁首 (header) ========== -->
+  <header>
+    <!-- 將 h1 包成可點擊 -->
+    <h1><a href="index.html">鑽之韻<br>DIAMOND SYMPHONY</a></h1>
+    <p>
+      鑽之韻致力於以創新工藝與嚴謹品質，打造出優雅、獨特的鑽石精品。<br>
+      我們的品牌融合藝術與匠心，為您呈現珍貴的光芒與永恆的美麗。
+    </p>
+    <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
+  </header>
 
-<main>
-  <div class="tabs">
-    <button class="tab-button" onclick="showTab('diamondTab')">裸鑽</button>
-    <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
-    <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
-    <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
-  </div>
+  <!-- ========== 主體區域 ========== -->
+  <main>
 
-  <div id="diamondTab" class="tab-content">
-    <div class="product-gallery" id="diamond-gallery"></div>
-  </div>
-
-  <div id="femaleTab" class="tab-content">
-    <div class="product-gallery" id="female-gallery"></div>
-  </div>
-
-  <div id="maleTab" class="tab-content">
-    <div class="product-gallery" id="male-gallery"></div>
-  </div>
-
-  <div id="necklaceTab" class="tab-content">
-    <div class="product-gallery" id="necklace-gallery"></div>
-  </div>
-
-  <div id="image-modal" class="modal" onclick="closeModal()">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <img id="modal-image" src="" alt="放大圖片" />
+    <!-- ========== 分頁籤 (Tabs) ========== -->
+    <div class="tabs">
+      <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
+      <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
+      <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
     </div>
-  </div>
-</main>
 
-<footer>
-  <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
-  <p>聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
-  <p>電話：0979 517 176 | 地址：台北市民生東路二段143號8樓</p>
-  <a href="index.html" class="back-home">返回首頁</a>
-</footer>
+    <!-- 女戒頁籤內容 -->
+    <div id="femaleTab" class="tab-content">
+      <div class="product-gallery" id="female-gallery"></div>
+    </div>
 
-<script>
-function showTab(tabId) {
-  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    <!-- 男戒頁籤內容 -->
+    <div id="maleTab" class="tab-content">
+      <div class="product-gallery" id="male-gallery"></div>
+    </div>
 
-function openModal(imgId) {
-  const modal = document.getElementById('image-modal');
-  document.getElementById('modal-image').src = document.getElementById(imgId).src;
-  modal.style.display = 'block';
-}
+    <!-- 項鍊頁籤內容 -->
+    <div id="necklaceTab" class="tab-content">
+      <div class="product-gallery" id="necklace-gallery"></div>
+    </div>
 
-function closeModal() { document.getElementById('image-modal').style.display = 'none'; }
+    <!-- Modal 彈窗 -->
+    <div id="image-modal" class="modal" onclick="closeModal()">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modal-image" src="" alt="放大圖片" />
+      </div>
+    </div>
 
-// 裸鑽
-const diamondCuts=['round','princess','heart','pear','cushion','asscher','emerald','marquise','radiant','oval'];
-const diamondGallery=document.getElementById('diamond-gallery');
-diamondCuts.forEach((cut,i)=>{
-  const div=document.createElement('div');
-  div.className='ring-set';
-  div.innerHTML=`<h2>${cut}</h2><div class="main-image"><img id="diamond${i}" src="images/diamond-${cut}.png" onclick="openModal('diamond${i}')"></div>`;
-  diamondGallery.appendChild(div);
-});
+  </main>
 
-// 預設顯示裸鑽
-showTab('diamondTab');
-</script>
+  <!-- ========== 網頁最後的結尾資訊 (footer) ========== -->
+  <footer>
+    <a href="https://lin.ee/dY9OiEQ" class="consultation-button">預約諮詢</a>
+    <p>聯繫我們：<a href="mailto:zuanzhiyun60@gmail.com">zuanzhiyun60@gmail.com</a></p>
+    <p>電話：0979 517 176</p>
+    <p>地址：台北市民生東路二段143號8樓</p>
+    <p>&copy; 2024 鑽之韻 DIAMOND SYMPHONY. All Rights Reserved.</p>
+
+    <!-- "返回首頁" 按鈕 -->
+    <a href="index.html" class="back-home">返回首頁</a>
+  </footer>
+
+  <!-- ========== JavaScript 功能區 ========== -->
+  <script>
+    // 頁籤切換功能
+    function showTab(tabId) {
+      // 先將所有 tab-content 隱藏
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach((tab) => {
+        tab.classList.remove('active');
+      });
+      // 只顯示目標 tab
+      const target = document.getElementById(tabId);
+      if (target) {
+        target.classList.add('active');
+      }
+      // 自動捲動到頁面頂部
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 切換主圖
+    function changeImage(targetId, newSrc) {
+      const mainPhoto = document.getElementById(targetId);
+      if (mainPhoto) {
+        mainPhoto.style.opacity = '0';
+        setTimeout(() => {
+          mainPhoto.src = newSrc;
+          mainPhoto.style.opacity = '1';
+        }, 300);
+      }
+    }
+
+    // 開啟 Modal
+    function openModal(targetId) {
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const mainPhoto = document.getElementById(targetId);
+      if (mainPhoto) {
+        modalImage.src = mainPhoto.src;
+        modal.style.display = 'block';
+      }
+    }
+
+    // 關閉 Modal
+    function closeModal() {
+      document.getElementById('image-modal').style.display = 'none';
+    }
+
+    // === 產生 女戒 ===
+    const femaleGallery = document.getElementById('female-gallery');
+    for (let i = 1; i <= 17; i++) {
+      const ringSet = document.createElement('div');
+      ringSet.className = 'ring-set';
+
+      // 標題
+      const title = document.createElement('h2');
+      title.textContent = `女戒${i}`;
+      ringSet.appendChild(title);
+
+      // 主圖
+      const mainImageDiv = document.createElement('div');
+      mainImageDiv.className = 'main-image';
+      const mainImg = document.createElement('img');
+      mainImg.id = `main-photo-female${i}`;
+      mainImg.src = `images/female-ring(${i})(1).png`;
+      mainImg.alt = `女戒${i}`;
+      mainImg.addEventListener('click', () => {
+        openModal(`main-photo-female${i}`);
+      });
+      mainImageDiv.appendChild(mainImg);
+      ringSet.appendChild(mainImageDiv);
+
+      // 縮圖
+      const thumbnailDiv = document.createElement('div');
+      thumbnailDiv.className = 'thumbnail-container';
+      for (let j = 1; j <= 4; j++) {
+        const thumbImg = document.createElement('img');
+        thumbImg.className = 'thumbnail';
+        thumbImg.src = `images/female-ring(${i})(${j}).png`;
+        thumbImg.alt = `女戒${i} - 圖${j}`;
+        thumbImg.addEventListener('click', () => {
+          changeImage(`main-photo-female${i}`, `images/female-ring(${i})(${j}).png`);
+        });
+        thumbnailDiv.appendChild(thumbImg);
+      }
+      ringSet.appendChild(thumbnailDiv);
+
+      femaleGallery.appendChild(ringSet);
+    }
+
+    // === 產生 男戒 ===
+    const maleGallery = document.getElementById('male-gallery');
+    for (let i = 1; i <= 7; i++) {
+      const ringSet = document.createElement('div');
+      ringSet.className = 'ring-set';
+
+      // 標題
+      const title = document.createElement('h2');
+      title.textContent = `男戒${i}`;
+      ringSet.appendChild(title);
+
+      // 主圖
+      const mainImageDiv = document.createElement('div');
+      mainImageDiv.className = 'main-image';
+      const mainImg = document.createElement('img');
+      mainImg.id = `main-photo-male${i}`;
+      mainImg.src = `images/male-ring(${i})(1).png`;
+      mainImg.alt = `男戒${i}`;
+      mainImg.addEventListener('click', () => {
+        openModal(`main-photo-male${i}`);
+      });
+      mainImageDiv.appendChild(mainImg);
+      ringSet.appendChild(mainImageDiv);
+
+      // 縮圖
+      const thumbnailDiv = document.createElement('div');
+      thumbnailDiv.className = 'thumbnail-container';
+      for (let j = 1; j <= 4; j++) {
+        const thumbImg = document.createElement('img');
+        thumbImg.className = 'thumbnail';
+        thumbImg.src = `images/male-ring(${i})(${j}).png`;
+        thumbImg.alt = `男戒${i} - 圖${j}`;
+        thumbImg.addEventListener('click', () => {
+          changeImage(`main-photo-male${i}`, `images/male-ring(${i})(${j}).png`);
+        });
+        thumbnailDiv.appendChild(thumbImg);
+      }
+      ringSet.appendChild(thumbnailDiv);
+
+      maleGallery.appendChild(ringSet);
+    }
+
+    // === 產生 項鍊 (每款3張) ===
+    const necklaceGallery = document.getElementById('necklace-gallery');
+    for (let i = 1; i <= 4; i++) {
+      const ringSet = document.createElement('div');
+      ringSet.className = 'ring-set';
+
+      // 標題
+      const title = document.createElement('h2');
+      title.textContent = `項鍊${i}`;
+      ringSet.appendChild(title);
+
+      // 主圖 (j=1)
+      const mainImageDiv = document.createElement('div');
+      mainImageDiv.className = 'main-image';
+      const mainImg = document.createElement('img');
+      mainImg.id = `main-photo-necklace${i}`;
+      mainImg.src = `images/necklace(${i})(1).png`;
+      mainImg.alt = `項鍊${i}`;
+      mainImg.addEventListener('click', () => {
+        openModal(`main-photo-necklace${i}`);
+      });
+      mainImageDiv.appendChild(mainImg);
+      ringSet.appendChild(mainImageDiv);
+
+      // 縮圖 (只有3張 j=1..3)
+      const thumbnailDiv = document.createElement('div');
+      thumbnailDiv.className = 'thumbnail-container';
+      for (let j = 1; j <= 3; j++) {
+        const thumbImg = document.createElement('img');
+        thumbImg.className = 'thumbnail';
+        thumbImg.src = `images/necklace(${i})(${j}).png`;
+        thumbImg.alt = `項鍊${i} - 圖${j}`;
+        thumbImg.addEventListener('click', () => {
+          changeImage(`main-photo-necklace${i}`, `images/necklace(${i})(${j}).png`);
+        });
+        thumbnailDiv.appendChild(thumbImg);
+      }
+      ringSet.appendChild(thumbnailDiv);
+
+      necklaceGallery.appendChild(ringSet);
+    }
+
+    // 預設顯示「女戒」
+    showTab('femaleTab');
+  </script>
 
 </body>
 </html>
