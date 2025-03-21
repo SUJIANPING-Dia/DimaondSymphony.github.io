@@ -79,21 +79,6 @@ diamondCuts.forEach((cut,i)=>{
   document.getElementById('diamond-gallery').innerHTML+=`<div class="ring-set"><h2>${cut}</h2><img id="diamond${i}" src="images/diamond-${cut}.png" onclick="openModal('diamond${i}')"></div>`;
 });
 
-// 女戒
-for(let i=1;i<=17;i++){
-  document.getElementById('female-gallery').innerHTML+=`<div class="ring-set"><h2>女戒${i}</h2><img id="female${i}" src="images/female-ring(${i})(1).png" onclick="openModal('female${i}')"></div>`;
-}
-
-// 男戒
-for(let i=1;i<=7;i++){
-  document.getElementById('male-gallery').innerHTML+=`<div class="ring-set"><h2>男戒${i}</h2><img id="male${i}" src="images/male-ring(${i})(1).png" onclick="openModal('male${i}')"></div>`;
-}
-
-// 項鍊
-for(let i=1;i<=4;i++){
-  document.getElementById('necklace-gallery').innerHTML+=`<div class="ring-set"><h2>項鍊${i}</h2><img id="necklace${i}" src="images/necklace(${i})(1).png" onclick="openModal('necklace${i}')"></div>`;
-}
-
 // 預設顯示裸鑽
 showTab('diamondTab');
 </script>
