@@ -108,12 +108,33 @@
   box-shadow: 0 6px 14px rgba(244, 193, 80, 0.5);
   border-color: #ffe08a;
 }
+.ring-set {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ring-set:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(244, 193, 80, 0.3);
+}
+
+.ring-set h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #f4c150;
+  letter-spacing: 0.5px;
+}
+
 @media (max-width: 480px) {
   .product-gallery {
     padding: 0 10px;
     gap: 15px;
   }
 }  
+
 
     .tab-content {
       display: none;
