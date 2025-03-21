@@ -38,10 +38,21 @@
     <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
   </div>
 
-  <div id="diamondTab" class="tab-content"><div class="product-gallery" id="diamond-gallery"></div></div>
-  <div id="femaleTab" class="tab-content"><div class="product-gallery" id="female-gallery"></div></div>
-  <div id="maleTab" class="tab-content"><div class="product-gallery" id="male-gallery"></div></div>
-  <div id="necklaceTab" class="tab-content"><div class="product-gallery" id="necklace-gallery"></div></div>
+  <div id="diamondTab" class="tab-content">
+    <div class="product-gallery" id="diamond-gallery"></div>
+  </div>
+
+  <div id="femaleTab" class="tab-content">
+    <div class="product-gallery" id="female-gallery"></div>
+  </div>
+
+  <div id="maleTab" class="tab-content">
+    <div class="product-gallery" id="male-gallery"></div>
+  </div>
+
+  <div id="necklaceTab" class="tab-content">
+    <div class="product-gallery" id="necklace-gallery"></div>
+  </div>
 
   <div id="image-modal" class="modal" onclick="closeModal()">
     <div class="modal-content">
@@ -74,9 +85,13 @@ function openModal(imgId) {
 function closeModal() { document.getElementById('image-modal').style.display = 'none'; }
 
 // 裸鑽
-const diamondCuts = ['round','princess','heart','pear','cushion','asscher','emerald','marquise','radiant','oval'];
+const diamondCuts=['round','princess','heart','pear','cushion','asscher','emerald','marquise','radiant','oval'];
+const diamondGallery=document.getElementById('diamond-gallery');
 diamondCuts.forEach((cut,i)=>{
-  document.getElementById('diamond-gallery').innerHTML+=`<div class="ring-set"><h2>${cut}</h2><img id="diamond${i}" src="images/diamond-${cut}.png" onclick="openModal('diamond${i}')"></div>`;
+  const div=document.createElement('div');
+  div.className='ring-set';
+  div.innerHTML=`<h2>${cut}</h2><div class="main-image"><img id="diamond${i}" src="images/diamond-${cut}.png" onclick="openModal('diamond${i}')"></div>`;
+  diamondGallery.appendChild(div);
 });
 
 // 預設顯示裸鑽
