@@ -254,12 +254,15 @@
       <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
       <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
       <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
+      <button class="tab-button" onclick="showTab('braceletTab')">手鍊</button>
       <button class="tab-button" onclick="showTab('looseTab')">裸鑽</button>
+
     </div>
 
     <div id="femaleTab" class="tab-content"><div class="product-gallery" id="female-gallery"></div></div>
     <div id="maleTab" class="tab-content"><div class="product-gallery" id="male-gallery"></div></div>
     <div id="necklaceTab" class="tab-content"><div class="product-gallery" id="necklace-gallery"></div></div>
+    <div id="braceletTab" class="tab-content"><div class="product-gallery" id="bracelet-gallery"></div></div>
     <div id="looseTab" class="tab-content"><div class="product-gallery" id="loose-gallery"></div></div>
 
     <div id="image-modal" class="modal" onclick="closeModal()">
@@ -314,6 +317,7 @@
 let femaleLoaded = false;
 let maleLoaded = false;
 let necklaceLoaded = false;
+let braceletLoaded = false;
 let looseLoaded = false;
 
 function showTab(tabId, event) {
@@ -326,6 +330,7 @@ function showTab(tabId, event) {
   if (tabId === 'femaleTab' && !femaleLoaded) { generateFemale(); femaleLoaded = true; }
   if (tabId === 'maleTab' && !maleLoaded) { generateMale(); maleLoaded = true; }
   if (tabId === 'necklaceTab' && !necklaceLoaded) { generateNecklace(); necklaceLoaded = true; }
+  if (tabId === 'braceletTab' && !braceletLoaded) { generateBracelet(); braceletLoaded = true; }
   if (tabId === 'looseTab' && !looseLoaded) { generateLoose(); looseLoaded = true; }
 }
 
@@ -443,6 +448,45 @@ function generateNecklace() {
   }
 }
 
+function generateBracelet() {
+  const braceletGallery = document.getElementById('bracelet-gallery');
+  for (let i = 1; i <= 1; i++) {
+    const ringSet = document.createElement('div');
+    ringSet.className = 'ring-set';
+    const title = document.createElement('h2');
+    title.textContent = `手鍊${i}`;
+    ringSet.appendChild(title);
+    const mainImageDiv = document.createElement('div');
+    mainImageDiv.className = 'main-image';
+    const mainImg = document.createElement('img');
+    mainImg.loading = 'lazy';
+    mainImg.id = `main-photo-bracelet${i}`;
+    mainImg.src = `images/bracelet(${i})(1).png`;
+    mainImg.alt = `手鍊${i}`;
+    mainImg.addEventListener('click', () => {
+      openModal(`main-photo-bracelet${i}`);
+    });
+    mainImageDiv.appendChild(mainImg);
+    ringSet.appendChild(mainImageDiv);
+    const thumbnailDiv = document.createElement('div');
+    thumbnailDiv.className = 'thumbnail-container';
+    for (let j = 1; j <= 3; j++) {
+      const thumbImg = document.createElement('img');
+      thumbImg.className = 'thumbnail';
+      thumbImg.loading = 'lazy';
+      thumbImg.src = `images/bracelet(${i})(${j}).png`;
+      thumbImg.alt = `手鍊${i} - 圖${j}`;
+      thumbImg.addEventListener('click', () => {
+        changeImage(`main-photo-bracelet${i}`, `images/bracelet(${i})(${j}).png`);
+      });
+      thumbnailDiv.appendChild(thumbImg);
+    }
+    ringSet.appendChild(thumbnailDiv);
+    braceletGallery.appendChild(ringSet);
+  }
+}
+
+  
 function generateLoose() {
   const looseGallery = document.getElementById('loose-gallery');
   const looseDiamonds = [
