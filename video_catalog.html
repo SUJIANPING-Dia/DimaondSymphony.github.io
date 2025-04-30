@@ -253,6 +253,7 @@
     <div class="tabs">
       <button class="tab-button" onclick="showTab('femaleTab')">女戒</button>
       <button class="tab-button" onclick="showTab('maleTab')">男戒</button>
+      <button class="tab-button" onclick="showTab('coupleTab')">對戒</button>
       <button class="tab-button" onclick="showTab('necklaceTab')">項鍊</button>
       <button class="tab-button" onclick="showTab('braceletTab')">手鍊</button>
       <button class="tab-button" onclick="showTab('looseTab')">裸鑽</button>
@@ -261,6 +262,7 @@
 
     <div id="femaleTab" class="tab-content"><div class="product-gallery" id="female-gallery"></div></div>
     <div id="maleTab" class="tab-content"><div class="product-gallery" id="male-gallery"></div></div>
+    <div id="coupleTab" class="tab-content"><div class="product-gallery" id="couple-gallery"></div></div>
     <div id="necklaceTab" class="tab-content"><div class="product-gallery" id="necklace-gallery"></div></div>
     <div id="braceletTab" class="tab-content"><div class="product-gallery" id="bracelet-gallery"></div></div>
     <div id="looseTab" class="tab-content"><div class="product-gallery" id="loose-gallery"></div></div>
@@ -316,6 +318,7 @@
   // 追蹤是否已經載入各分頁資料
 let femaleLoaded = false;
 let maleLoaded = false;
+let coupleLoaded = false;
 let necklaceLoaded = false;
 let braceletLoaded = false;
 let looseLoaded = false;
@@ -329,6 +332,7 @@ function showTab(tabId, event) {
 
   if (tabId === 'femaleTab' && !femaleLoaded) { generateFemale(); femaleLoaded = true; }
   if (tabId === 'maleTab' && !maleLoaded) { generateMale(); maleLoaded = true; }
+  if (tabId === 'coupleTab' && !coupleLoaded) { generateCouple(); coupleLoaded = true; }
   if (tabId === 'necklaceTab' && !necklaceLoaded) { generateNecklace(); necklaceLoaded = true; }
   if (tabId === 'braceletTab' && !braceletLoaded) { generateBracelet(); braceletLoaded = true; }
   if (tabId === 'looseTab' && !looseLoaded) { generateLoose(); looseLoaded = true; }
@@ -410,6 +414,47 @@ function generateMale() {
   }
 }
 
+function generateCouple() {
+  const coupleGallery = document.getElementById('couple-gallery');
+  for (let i = 1; i <= 3; i++) {
+    const ringSet = document.createElement('div');
+    ringSet.className = 'ring-set';
+    const title = document.createElement('h2');
+    title.textContent = `對戒${i}`;
+    ringSet.appendChild(title);
+    const mainImageDiv = document.createElement('div');
+    mainImageDiv.className = 'main-image';
+    const mainImg = document.createElement('img');
+    mainImg.loading = 'lazy';
+    mainImg.id = `main-photo-couple${i}`;
+    mainImg.src = `images/couple-ring(${i})(1).png`;
+    mainImg.alt = `對戒${i}`;
+    mainImg.addEventListener('click', () => {
+      openModal(`main-photo-couple${i}`);
+    });
+    mainImageDiv.appendChild(mainImg);
+    ringSet.appendChild(mainImageDiv);
+
+    const thumbnailDiv = document.createElement('div');
+    thumbnailDiv.className = 'thumbnail-container';
+    for (let j = 1; j <= 4; j++) {
+      const thumbImg = document.createElement('img');
+      thumbImg.className = 'thumbnail';
+      thumbImg.loading = 'lazy';
+      thumbImg.src = `images/couple-ring(${i})(${j}).png`;
+      thumbImg.alt = `對戒${i} - 圖${j}`;
+      thumbImg.addEventListener('click', () => {
+        changeImage(`main-photo-couple${i}`, `images/couple-ring(${i})(${j}).png`);
+      });
+      thumbnailDiv.appendChild(thumbImg);
+    }
+
+    ringSet.appendChild(thumbnailDiv);
+    coupleGallery.appendChild(ringSet);
+  }
+}
+
+  
 function generateNecklace() {
   const necklaceGallery = document.getElementById('necklace-gallery');
   for (let i = 1; i <= 5; i++) {
